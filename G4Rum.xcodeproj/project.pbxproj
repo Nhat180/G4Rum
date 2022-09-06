@@ -15,6 +15,10 @@
 		A0A8ED1928C6478B00A6C13D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0A8ED1828C6478B00A6C13D /* FirebaseAuth */; };
 		A0A8ED1B28C6478B00A6C13D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A0A8ED1A28C6478B00A6C13D /* FirebaseFirestore */; };
 		A0A8ED1D28C6478B00A6C13D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A0A8ED1C28C6478B00A6C13D /* FirebaseFirestoreSwift */; };
+		A0E8C8FC28C738B700E0389D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8C8FB28C738B700E0389D /* Comment.swift */; };
+		A0E8C8FE28C7497E00E0389D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8C8FD28C7497E00E0389D /* Post.swift */; };
+		A0E8C90028C7557400E0389D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8C8FF28C7557400E0389D /* User.swift */; };
+		A0EFECCE28C7091700801BFD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFECCD28C7091700801BFD /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		A0A8ED0B28C63DF700A6C13D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0A8ED0E28C63DF700A6C13D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0A8ED1528C6438D00A6C13D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A0E8C8FB28C738B700E0389D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		A0E8C8FD28C7497E00E0389D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A0E8C8FF28C7557400E0389D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A0EFECCD28C7091700801BFD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,10 @@
 		A0A8ED1E28C647EA00A6C13D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A0EFECCD28C7091700801BFD /* Game.swift */,
+				A0E8C8FB28C738B700E0389D /* Comment.swift */,
+				A0E8C8FD28C7497E00E0389D /* Post.swift */,
+				A0E8C8FF28C7557400E0389D /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,7 +192,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0A8ED0A28C63DF200A6C13D /* ContentView.swift in Sources */,
+				A0EFECCE28C7091700801BFD /* Game.swift in Sources */,
+				A0E8C90028C7557400E0389D /* User.swift in Sources */,
 				A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */,
+				A0E8C8FC28C738B700E0389D /* Comment.swift in Sources */,
+				A0E8C8FE28C7497E00E0389D /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
