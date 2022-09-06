@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F203C9C28C7633F0028A07F /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9B28C7633F0028A07F /* LoginSignupView.swift */; };
+		9F203C9E28C763680028A07F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9D28C763680028A07F /* HomeView.swift */; };
 		A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8ED0728C63DF200A6C13D /* G4RumApp.swift */; };
 		A0A8ED0A28C63DF200A6C13D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8ED0928C63DF200A6C13D /* ContentView.swift */; };
 		A0A8ED0C28C63DF700A6C13D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A8ED0B28C63DF700A6C13D /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F203C9B28C7633F0028A07F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = SOURCE_ROOT; };
+		9F203C9D28C763680028A07F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = SOURCE_ROOT; };
 		A0A8ED0428C63DF200A6C13D /* G4Rum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = G4Rum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A8ED0728C63DF200A6C13D /* G4RumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = G4RumApp.swift; sourceTree = "<group>"; };
 		A0A8ED0928C63DF200A6C13D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 		A0A8ED2028C647F800A6C13D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9F203C9B28C7633F0028A07F /* LoginSignupView.swift */,
+				9F203C9D28C763680028A07F /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +202,8 @@
 				A0E8C90028C7557400E0389D /* User.swift in Sources */,
 				A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */,
 				A0E8C8FC28C738B700E0389D /* Comment.swift in Sources */,
+				9F203C9E28C763680028A07F /* HomeView.swift in Sources */,
+				9F203C9C28C7633F0028A07F /* LoginSignupView.swift in Sources */,
 				A0E8C8FE28C7497E00E0389D /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
