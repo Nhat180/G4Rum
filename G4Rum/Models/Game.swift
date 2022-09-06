@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Game: Identifiable, Codable {
     var id: String
@@ -14,11 +15,14 @@ struct Game: Identifiable, Codable {
     var releaseDate: String
     var ratings: String
     var minAge: String
-    var language: String
     var size: String
     var genre: String
     var totalComment: Int
+    var totalRating: Int
     var description: String
     
     var imageUrl: String
+    var image: AsyncImage<Image> {
+        AsyncImage(url: URL(string: imageUrl))
+    }
 }

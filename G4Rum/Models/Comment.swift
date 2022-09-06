@@ -11,4 +11,5 @@ struct Comment: Identifiable, Codable {
     var id: String
     var username: String
     var text: String
+    var rating: Int
 }
