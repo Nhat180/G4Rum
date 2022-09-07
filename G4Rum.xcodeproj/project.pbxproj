@@ -25,8 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F203C9B28C7633F0028A07F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = SOURCE_ROOT; };
-		9F203C9D28C763680028A07F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = SOURCE_ROOT; };
+		9F203C9B28C7633F0028A07F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginSignupView.swift; path = G4Rum/Views/LoginSignupView.swift; sourceTree = SOURCE_ROOT; };
+		9F203C9D28C763680028A07F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = G4Rum/Views/HomeView.swift; sourceTree = SOURCE_ROOT; };
 		A0A8ED0428C63DF200A6C13D /* G4Rum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = G4Rum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A8ED0728C63DF200A6C13D /* G4RumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = G4RumApp.swift; sourceTree = "<group>"; };
 		A0A8ED0928C63DF200A6C13D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A080D2D328C86866002B70D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F203C9D28C763680028A07F /* HomeView.swift */,
+				9F203C9B28C7633F0028A07F /* LoginSignupView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A0A8ECFB28C63DF200A6C13D = {
 			isa = PBXGroup;
 			children = (
@@ -73,7 +82,7 @@
 		A0A8ED0628C63DF200A6C13D /* G4Rum */ = {
 			isa = PBXGroup;
 			children = (
-				A0A8ED2028C647F800A6C13D /* Views */,
+				A080D2D328C86866002B70D6 /* Views */,
 				A0A8ED1F28C647F000A6C13D /* ViewModels */,
 				A0A8ED1E28C647EA00A6C13D /* Models */,
 				A0A8ED1528C6438D00A6C13D /* GoogleService-Info.plist */,
@@ -110,15 +119,6 @@
 				A0FA0D3828C7A8E800AC09EA /* GameViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		A0A8ED2028C647F800A6C13D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9F203C9B28C7633F0028A07F /* LoginSignupView.swift */,
-				9F203C9D28C763680028A07F /* HomeView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
