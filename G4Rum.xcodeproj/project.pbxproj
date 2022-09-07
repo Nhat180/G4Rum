@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9F203C9C28C7633F0028A07F /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9B28C7633F0028A07F /* LoginSignupView.swift */; };
 		9F203C9E28C763680028A07F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9D28C763680028A07F /* HomeView.swift */; };
+		A073E4F128C900F800166899 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A073E4F028C900F800166899 /* Category.swift */; };
+		A073E4F428C902F200166899 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A073E4F328C902F200166899 /* Lottie */; };
+		A073E4F728C903A100166899 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A073E4F628C903A100166899 /* OnboardingView.swift */; };
 		A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8ED0728C63DF200A6C13D /* G4RumApp.swift */; };
 		A0A8ED0A28C63DF200A6C13D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8ED0928C63DF200A6C13D /* ContentView.swift */; };
 		A0A8ED0C28C63DF700A6C13D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A8ED0B28C63DF700A6C13D /* Assets.xcassets */; };
@@ -27,6 +30,8 @@
 /* Begin PBXFileReference section */
 		9F203C9B28C7633F0028A07F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginSignupView.swift; path = G4Rum/Views/LoginSignupView.swift; sourceTree = SOURCE_ROOT; };
 		9F203C9D28C763680028A07F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = G4Rum/Views/HomeView.swift; sourceTree = SOURCE_ROOT; };
+		A073E4F028C900F800166899 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		A073E4F628C903A100166899 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A0A8ED0428C63DF200A6C13D /* G4Rum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = G4Rum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A8ED0728C63DF200A6C13D /* G4RumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = G4RumApp.swift; sourceTree = "<group>"; };
 		A0A8ED0928C63DF200A6C13D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,17 +53,26 @@
 				A0A8ED1928C6478B00A6C13D /* FirebaseAuth in Frameworks */,
 				A0A8ED1B28C6478B00A6C13D /* FirebaseFirestore in Frameworks */,
 				A0A8ED1D28C6478B00A6C13D /* FirebaseFirestoreSwift in Frameworks */,
+				A073E4F428C902F200166899 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A073E4F528C9038000166899 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		A080D2D328C86866002B70D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				9F203C9D28C763680028A07F /* HomeView.swift */,
 				9F203C9B28C7633F0028A07F /* LoginSignupView.swift */,
+				A073E4F628C903A100166899 /* OnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -82,6 +96,7 @@
 		A0A8ED0628C63DF200A6C13D /* G4Rum */ = {
 			isa = PBXGroup;
 			children = (
+				A073E4F528C9038000166899 /* Lottie */,
 				A080D2D328C86866002B70D6 /* Views */,
 				A0A8ED1F28C647F000A6C13D /* ViewModels */,
 				A0A8ED1E28C647EA00A6C13D /* Models */,
@@ -109,6 +124,7 @@
 				A0E8C8FB28C738B700E0389D /* Comment.swift */,
 				A0E8C8FD28C7497E00E0389D /* Post.swift */,
 				A0E8C8FF28C7557400E0389D /* User.swift */,
+				A073E4F028C900F800166899 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,6 +157,7 @@
 				A0A8ED1828C6478B00A6C13D /* FirebaseAuth */,
 				A0A8ED1A28C6478B00A6C13D /* FirebaseFirestore */,
 				A0A8ED1C28C6478B00A6C13D /* FirebaseFirestoreSwift */,
+				A073E4F328C902F200166899 /* Lottie */,
 			);
 			productName = G4Rum;
 			productReference = A0A8ED0428C63DF200A6C13D /* G4Rum.app */;
@@ -172,6 +189,7 @@
 			mainGroup = A0A8ECFB28C63DF200A6C13D;
 			packageReferences = (
 				A0A8ED1728C6478B00A6C13D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A073E4F228C902F200166899 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = A0A8ED0528C63DF200A6C13D /* Products */;
 			projectDirPath = "";
@@ -201,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0FA0D3928C7A8E800AC09EA /* GameViewModel.swift in Sources */,
+				A073E4F128C900F800166899 /* Category.swift in Sources */,
 				A0A8ED0A28C63DF200A6C13D /* ContentView.swift in Sources */,
 				A0EFECCE28C7091700801BFD /* Game.swift in Sources */,
 				A0E8C90028C7557400E0389D /* User.swift in Sources */,
@@ -209,6 +228,7 @@
 				9F203C9E28C763680028A07F /* HomeView.swift in Sources */,
 				9F203C9C28C7633F0028A07F /* LoginSignupView.swift in Sources */,
 				A0E8C8FE28C7497E00E0389D /* Post.swift in Sources */,
+				A073E4F728C903A100166899 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +268,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -308,6 +329,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -409,6 +431,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A073E4F228C902F200166899 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		A0A8ED1728C6478B00A6C13D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -420,6 +450,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A073E4F328C902F200166899 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A073E4F228C902F200166899 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		A0A8ED1828C6478B00A6C13D /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A0A8ED1728C6478B00A6C13D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
