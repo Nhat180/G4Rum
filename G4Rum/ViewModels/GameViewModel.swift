@@ -14,8 +14,8 @@ class GameViewModel: ObservableObject {
     
     private var db = Firestore.firestore()
     
-    func getAllGames() {
-        db.collection("games").whereField("genre", isEqualTo: "action").addSnapshotListener { (querySnapshot, error) in
+    func getAllGames(genre: String) {
+        db.collection("games").whereField("genre", isEqualTo: genre).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print ("No documents")
                 return

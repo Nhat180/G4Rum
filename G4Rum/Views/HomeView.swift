@@ -24,7 +24,7 @@ struct HomeView: View {
                 }
                 .navigationBarTitle("Game testing")
                 .onAppear() {
-                    self.gameViewModel.getAllGames()
+                    self.gameViewModel.getAllGames(genre: "action")
                 }
             }
         }
