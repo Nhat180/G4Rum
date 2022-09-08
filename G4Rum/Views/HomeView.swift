@@ -14,7 +14,7 @@ struct HomeView: View {
 //        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         VStack {
             NavigationView {
-                List(gameViewModel.games) { game in
+                List(gameViewModel.randomGames) { game in
                     VStack(alignment: .leading) {
                         Text(game.id)
                             .font(.headline)
@@ -24,7 +24,7 @@ struct HomeView: View {
                 }
                 .navigationBarTitle("Game testing")
                 .onAppear() {
-                    self.gameViewModel.getAllGames(genre: "action")
+                    self.gameViewModel.getRandomGames()
                 }
             }
         }
