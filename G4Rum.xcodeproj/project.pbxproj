@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842EC48828C9CF6E002854E2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EC48728C9CF6E002854E2 /* AuthViewModel.swift */; };
 		9F203C9C28C7633F0028A07F /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9B28C7633F0028A07F /* LoginSignupView.swift */; };
 		9F203C9E28C763680028A07F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9D28C763680028A07F /* HomeView.swift */; };
 		9F203CA028C9B75B0028A07F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9F28C9B75B0028A07F /* SplashView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		842EC48728C9CF6E002854E2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		9F203C9B28C7633F0028A07F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginSignupView.swift; path = G4Rum/Views/LoginSignupView.swift; sourceTree = SOURCE_ROOT; };
 		9F203C9D28C763680028A07F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = G4Rum/Views/HomeView.swift; sourceTree = SOURCE_ROOT; };
 		9F203C9F28C9B75B0028A07F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				A0FA0D3828C7A8E800AC09EA /* GameViewModel.swift */,
+				842EC48728C9CF6E002854E2 /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				A0A8ED0A28C63DF200A6C13D /* ContentView.swift in Sources */,
 				A0EFECCE28C7091700801BFD /* Game.swift in Sources */,
 				A0E8C90028C7557400E0389D /* User.swift in Sources */,
+				842EC48828C9CF6E002854E2 /* AuthViewModel.swift in Sources */,
 				9F203CA028C9B75B0028A07F /* SplashView.swift in Sources */,
 				A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */,
 				A0E8C8FC28C738B700E0389D /* Comment.swift in Sources */,

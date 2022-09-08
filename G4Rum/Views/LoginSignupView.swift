@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct LoginSignupView: View {
-    @State private var showHomeView = true
+    @StateObject private var authViewModel = AuthViewModel()
     
     var body: some View {
-        if showHomeView {
-            Home(showHomeView: self.$showHomeView)
+        if !authViewModel.isLogin {
+            AuthView(authViewModel: authViewModel)
                 // for light status bar...
                 .preferredColorScheme(.dark)
         } else {
-            HomeView()
+            HomeView(authViewModel: authViewModel)
         }
     }
 }
@@ -27,10 +27,9 @@ struct LoginSignupView_Previews: PreviewProvider {
     }
 }
 
-struct Home : View {
-    
+struct AuthView : View {
+    @ObservedObject var authViewModel = AuthViewModel()
     @State var index = 0
-    @Binding var showHomeView : Bool
     
     var body: some View{
         
@@ -46,11 +45,11 @@ struct Home : View {
                 VStack{
                     ZStack{
                         
-                        SignUP(index: self.$index)
+                        SignUP(authViewModel: authViewModel, index: self.$index)
                             // changing view order...
                             .zIndex(Double(self.index))
                         
-                        Login(index: self.$index, showHomeView: self.$showHomeView)
+                        Login(authViewModel: authViewModel, index: self.$index)
 
                     }
                 }
@@ -62,7 +61,6 @@ struct Home : View {
 }
 
 // Curve...
-
 struct CShape : Shape {
     
     func path(in rect: CGRect) -> Path {
@@ -70,7 +68,6 @@ struct CShape : Shape {
         return Path{path in
 
             // right side curve...
-            
             path.move(to: CGPoint(x: rect.width, y: 100))
             path.addLine(to: CGPoint(x: rect.width, y: rect.height))
             path.addLine(to: CGPoint(x: 0, y: rect.height))
@@ -99,81 +96,81 @@ struct CShape1 : Shape {
 }
 
 struct Login : View {
-    
+    @ObservedObject var authViewModel = AuthViewModel()
     @State var email = ""
     @State var pass = ""
     @Binding var index : Int
-    @Binding var showHomeView: Bool
+    
     
     var body: some View{
         
         ZStack(alignment: .bottom) {
             
-            VStack{
-                
-                HStack{
-                    
-                    VStack(spacing: 10){
-                        
-                        Text("Login")
-                            .foregroundColor(self.index == 0 ? .white : .gray)
-                            .font(.title)
-                            .fontWeight(.bold)
-                        
-                        Capsule()
-                            .fill(self.index == 0 ? .white : Color.clear)
-                            .frame(width: 100, height: 5)
-                    }
-                    
-                    Spacer(minLength: 0)
-                }
-                .padding(.top, 20)// for top curve...
-                
                 VStack{
                     
-                    HStack(spacing: 15){
+                    HStack{
                         
-                        Image(systemName: "envelope.fill")
-                            .foregroundColor(ColorConstants.darkRed)
+                        VStack(spacing: 10){
+                            
+                            Text("Login")
+                                .foregroundColor(self.index == 0 ? .white : .gray)
+                                .font(.title)
+                                .fontWeight(.bold)
+                            
+                            Capsule()
+                                .fill(self.index == 0 ? .white : Color.clear)
+                                .frame(width: 100, height: 5)
+                        }
                         
-                        TextField("Email Address", text: self.$email)
+                        Spacer(minLength: 0)
                     }
+                    .padding(.top, 20)// for top curve...
                     
-                    Divider().background(Color.white.opacity(0.5))
-                }
-                .padding(.horizontal)
-                .padding(.top, 40)
-                
-                VStack{
-                    
-                    HStack(spacing: 15){
+                    VStack{
                         
-                        Image(systemName: "eye.slash.fill")
-                            .foregroundColor(ColorConstants.darkRed)
+                        HStack(spacing: 15){
+                            
+                            Image(systemName: "envelope.fill")
+                                .foregroundColor(ColorConstants.darkRed)
+                            
+                            TextField("Email Address", text: self.$email)
+                        }
                         
-                        SecureField("Password", text: self.$pass)
+                        Divider().background(Color.white.opacity(0.5))
                     }
+                    .padding(.horizontal)
+                    .padding(.top, 40)
                     
-                    Divider().background(Color.white.opacity(0.5))
-                }
-                .padding(.horizontal)
-                .padding(.top, 30)
-                
-                HStack{
-                    
-                    Spacer(minLength: 0)
-                    
-                    Button(action: {
+                    VStack{
                         
-                    }) {
+                        HStack(spacing: 15){
+                            
+                            Image(systemName: "eye.slash.fill")
+                                .foregroundColor(ColorConstants.darkRed)
+                            
+                            SecureField("Password", text: self.$pass)
+                        }
                         
-                        Text("Forget Password?")
-                            .foregroundColor(Color.white.opacity(0.6))
+                        Divider().background(Color.white.opacity(0.5))
                     }
+                    .padding(.horizontal)
+                    .padding(.top, 30)
+                    
+                    HStack{
+                        
+                        Spacer(minLength: 0)
+                        
+                        Button(action: {
+                            
+                        }) {
+                            
+                            Text("Forget Password?")
+                                .foregroundColor(Color.white.opacity(0.6))
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 30)
                 }
-                .padding(.horizontal)
-                .padding(.top, 30)
-            }
             .padding()
             // bottom padding...
             .padding(.bottom, 65)
@@ -192,22 +189,33 @@ struct Login : View {
             // Button...
             
             Button(action: {
-                self.showHomeView.toggle()
+                self.authViewModel.signIn(email: email, password: pass)
             }) {
-                
-                Text("LOGIN")
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                    .padding(.vertical)
-                    .padding(.horizontal, 55)
-                    .background(ColorConstants.darkRed)
-                    .clipShape(Capsule())
-                    // shadow...
-                    .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
+                if (authViewModel.authLoading) {
+                    ProgressView()
+                        .padding(.vertical)
+                        .padding(.horizontal, 55)
+                        .background(ColorConstants.darkRed)
+                        .clipShape(Capsule())
+                        // shadow...
+                        .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
+                } else {
+                    Text("LOGIN")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .padding(.vertical)
+                        .padding(.horizontal, 55)
+                        .background(ColorConstants.darkRed)
+                        .clipShape(Capsule())
+                        // shadow...
+                        .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
+                    
+                }
             }
             // moving view down..
             .offset(y: 25)
             .opacity(self.index == 0 ? 1 : 0)
+            .disabled(!authViewModel.authLoading && !email.isEmpty && !pass.isEmpty ? false : true)
         }
     }
 }
@@ -215,7 +223,7 @@ struct Login : View {
 // SignUP Page..
 
 struct SignUP : View {
-    
+    @ObservedObject var authViewModel = AuthViewModel()
     @State var email = ""
     @State var pass = ""
     @State var Repass = ""
@@ -313,18 +321,28 @@ struct SignUP : View {
             // Button...
             
             Button(action: {
-                
+                authViewModel.signUp(email: email, password: pass)
             }) {
-                
-                Text("SIGNUP")
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                    .padding(.vertical)
-                    .padding(.horizontal, 50)
-                    .background(ColorConstants.darkRed)
-                    .clipShape(Capsule())
-                    // shadow...
-                    .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
+                if (authViewModel.authLoading) {
+                    ProgressView()
+                        .padding(.vertical)
+                        .padding(.horizontal, 55)
+                        .background(ColorConstants.darkRed)
+                        .clipShape(Capsule())
+                        // shadow...
+                        .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
+                } else {
+                    Text("SIGNUP")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .padding(.vertical)
+                        .padding(.horizontal, 55)
+                        .background(ColorConstants.darkRed)
+                        .clipShape(Capsule())
+                        // shadow...
+                        .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
+                    
+                }
             }
             // moving view down..
             .offset(y: 25)

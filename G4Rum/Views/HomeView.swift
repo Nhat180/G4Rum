@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var gameViewModel = GameViewModel()
+    @ObservedObject var authViewModel = AuthViewModel()
     
     var body: some View {
 //        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -26,6 +27,20 @@ struct HomeView: View {
                 .onAppear() {
                     self.gameViewModel.getRandomGames()
                 }
+            }
+            Button(action: {
+                print("Hello")
+                authViewModel.signOut()
+            }) {
+                Text("LOG OUT")
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding(.vertical)
+                    .padding(.horizontal, 55)
+                    .background(ColorConstants.darkRed)
+                    .clipShape(Capsule())
+                    // shadow...
+                    .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
             }
         }
     }
