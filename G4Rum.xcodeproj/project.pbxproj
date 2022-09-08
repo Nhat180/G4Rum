@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		9F203C9C28C7633F0028A07F /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9B28C7633F0028A07F /* LoginSignupView.swift */; };
 		9F203C9E28C763680028A07F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9D28C763680028A07F /* HomeView.swift */; };
+		9F203CA028C9B75B0028A07F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9F28C9B75B0028A07F /* SplashView.swift */; };
+		9F203CA228C9B7EB0028A07F /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203CA128C9B7EB0028A07F /* LottieView.swift */; };
+		9F203CA428C9BB610028A07F /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F203CA328C9BB610028A07F /* splash.json */; };
+		9F203CA728C9BDB80028A07F /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203CA628C9BDB80028A07F /* ColorConstants.swift */; };
+		9F203CA928C9C10B0028A07F /* team.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F203CA828C9C10B0028A07F /* team.json */; };
+		9F203CAB28C9C2B50028A07F /* social.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F203CAA28C9C2B50028A07F /* social.json */; };
+		9F203CAD28C9C81F0028A07F /* rating.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F203CAC28C9C81F0028A07F /* rating.json */; };
 		A073E4F128C900F800166899 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A073E4F028C900F800166899 /* Category.swift */; };
 		A073E4F428C902F200166899 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A073E4F328C902F200166899 /* Lottie */; };
 		A073E4F728C903A100166899 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A073E4F628C903A100166899 /* OnboardingView.swift */; };
@@ -30,6 +37,13 @@
 /* Begin PBXFileReference section */
 		9F203C9B28C7633F0028A07F /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginSignupView.swift; path = G4Rum/Views/LoginSignupView.swift; sourceTree = SOURCE_ROOT; };
 		9F203C9D28C763680028A07F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = G4Rum/Views/HomeView.swift; sourceTree = SOURCE_ROOT; };
+		9F203C9F28C9B75B0028A07F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		9F203CA128C9B7EB0028A07F /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LottieView.swift; path = G4Rum/Views/LottieView.swift; sourceTree = SOURCE_ROOT; };
+		9F203CA328C9BB610028A07F /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
+		9F203CA628C9BDB80028A07F /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
+		9F203CA828C9C10B0028A07F /* team.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = team.json; sourceTree = "<group>"; };
+		9F203CAA28C9C2B50028A07F /* social.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = social.json; sourceTree = "<group>"; };
+		9F203CAC28C9C81F0028A07F /* rating.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rating.json; sourceTree = "<group>"; };
 		A073E4F028C900F800166899 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A073E4F628C903A100166899 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A0A8ED0428C63DF200A6C13D /* G4Rum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = G4Rum.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,9 +74,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F203CA528C9BDA40028A07F /* ColorConstants */ = {
+			isa = PBXGroup;
+			children = (
+				9F203CA628C9BDB80028A07F /* ColorConstants.swift */,
+			);
+			path = ColorConstants;
+			sourceTree = "<group>";
+		};
 		A073E4F528C9038000166899 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				9F203CAC28C9C81F0028A07F /* rating.json */,
+				9F203CAA28C9C2B50028A07F /* social.json */,
+				9F203CA828C9C10B0028A07F /* team.json */,
+				9F203CA328C9BB610028A07F /* splash.json */,
+				9F203CA128C9B7EB0028A07F /* LottieView.swift */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -73,6 +100,7 @@
 				9F203C9D28C763680028A07F /* HomeView.swift */,
 				9F203C9B28C7633F0028A07F /* LoginSignupView.swift */,
 				A073E4F628C903A100166899 /* OnboardingView.swift */,
+				9F203C9F28C9B75B0028A07F /* SplashView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,6 +124,7 @@
 		A0A8ED0628C63DF200A6C13D /* G4Rum */ = {
 			isa = PBXGroup;
 			children = (
+				9F203CA528C9BDA40028A07F /* ColorConstants */,
 				A073E4F528C9038000166899 /* Lottie */,
 				A080D2D328C86866002B70D6 /* Views */,
 				A0A8ED1F28C647F000A6C13D /* ViewModels */,
@@ -205,8 +234,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F203CAB28C9C2B50028A07F /* social.json in Resources */,
 				A0A8ED0F28C63DF700A6C13D /* Preview Assets.xcassets in Resources */,
 				A0A8ED0C28C63DF700A6C13D /* Assets.xcassets in Resources */,
+				9F203CAD28C9C81F0028A07F /* rating.json in Resources */,
+				9F203CA928C9C10B0028A07F /* team.json in Resources */,
+				9F203CA428C9BB610028A07F /* splash.json in Resources */,
 				A0A8ED1628C6438D00A6C13D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,8 +256,11 @@
 				A0A8ED0A28C63DF200A6C13D /* ContentView.swift in Sources */,
 				A0EFECCE28C7091700801BFD /* Game.swift in Sources */,
 				A0E8C90028C7557400E0389D /* User.swift in Sources */,
+				9F203CA028C9B75B0028A07F /* SplashView.swift in Sources */,
 				A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */,
 				A0E8C8FC28C738B700E0389D /* Comment.swift in Sources */,
+				9F203CA228C9B7EB0028A07F /* LottieView.swift in Sources */,
+				9F203CA728C9BDB80028A07F /* ColorConstants.swift in Sources */,
 				9F203C9E28C763680028A07F /* HomeView.swift in Sources */,
 				9F203C9C28C7633F0028A07F /* LoginSignupView.swift in Sources */,
 				A0E8C8FE28C7497E00E0389D /* Post.swift in Sources */,
