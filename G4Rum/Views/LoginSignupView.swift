@@ -36,15 +36,14 @@ struct Home : View {
         
         GeometryReader{_ in
             ZStack{
-                LinearGradient(gradient: Gradient(colors: []),
+                LinearGradient(gradient: Gradient(colors: [
+                    .black,
+                    ColorConstants.darkRed
+                ]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
                 VStack{
-                    Image("logo")
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    
                     ZStack{
                         
                         SignUP(index: self.$index)
@@ -135,7 +134,7 @@ struct Login : View {
                     HStack(spacing: 15){
                         
                         Image(systemName: "envelope.fill")
-                        .foregroundColor(Color("Color1"))
+                            .foregroundColor(ColorConstants.darkRed)
                         
                         TextField("Email Address", text: self.$email)
                     }
@@ -150,7 +149,7 @@ struct Login : View {
                     HStack(spacing: 15){
                         
                         Image(systemName: "eye.slash.fill")
-                        .foregroundColor(Color("Color1"))
+                            .foregroundColor(ColorConstants.darkRed)
                         
                         SecureField("Password", text: self.$pass)
                     }
@@ -201,7 +200,7 @@ struct Login : View {
                     .fontWeight(.bold)
                     .padding(.vertical)
                     .padding(.horizontal, 55)
-                    .background(Color("Color1"))
+                    .background(ColorConstants.darkRed)
                     .clipShape(Capsule())
                     // shadow...
                     .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
@@ -251,7 +250,7 @@ struct SignUP : View {
                     HStack(spacing: 15){
                         
                         Image(systemName: "person.fill")
-                        .foregroundColor(Color("Color1"))
+                        .foregroundColor(ColorConstants.darkRed)
                         
                         TextField("Username", text: self.$email)
                     }
@@ -266,7 +265,7 @@ struct SignUP : View {
                     HStack(spacing: 15){
                         
                         Image(systemName: "envelope.fill")
-                        .foregroundColor(Color("Color1"))
+                        .foregroundColor(ColorConstants.darkRed)
                         
                         SecureField("Email Address", text: self.$pass)
                     }
@@ -284,7 +283,7 @@ struct SignUP : View {
                     HStack(spacing: 15){
                         
                         Image(systemName: "eye.slash.fill")
-                        .foregroundColor(Color("Color1"))
+                        .foregroundColor(ColorConstants.darkRed)
                         
                         SecureField("Password", text: self.$Repass)
                     }
@@ -322,7 +321,7 @@ struct SignUP : View {
                     .fontWeight(.bold)
                     .padding(.vertical)
                     .padding(.horizontal, 50)
-                    .background(Color("Color1"))
+                    .background(ColorConstants.darkRed)
                     .clipShape(Capsule())
                     // shadow...
                     .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
