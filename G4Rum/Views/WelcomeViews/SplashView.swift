@@ -11,19 +11,27 @@
 */
 
 import SwiftUI
+import FirebaseAuth
 
 struct SplashView: View {
-    
+    @StateObject private var authViewModel = AuthViewModel()
     @State var isWelcomeActive: Bool = false
     @AppStorage("_showOnboarding") var showOnboarding: Bool = true
+    let user = Auth.auth().currentUser
     
     var body: some View {
         ZStack{
             if self.isWelcomeActive {
-                LoginSignupView()
-                    .fullScreenCover(isPresented: $showOnboarding, content: {
-                        OnboardingView(showOnboarding: $showOnboarding)
-                    })
+                if(user == nil) {
+                    LoginSignupView(authViewModel: authViewModel)
+                        .fullScreenCover(isPresented: $showOnboarding, content: {
+                            OnboardingView(showOnboarding: $showOnboarding)
+                        })
+                } else {
+                    //HomeView(authViewModel: authViewModel)
+                    GameList()
+                }
+                
             } else {
                 ZStack{
                     LinearGradient(gradient: Gradient(colors: [

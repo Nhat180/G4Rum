@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginSignupView: View {
-    @StateObject private var authViewModel = AuthViewModel()
+    @ObservedObject var authViewModel = AuthViewModel()
     
     var body: some View {
         if !authViewModel.isLogin {
@@ -16,7 +16,8 @@ struct LoginSignupView: View {
                 // for light status bar...
                 .preferredColorScheme(.dark)
         } else {
-            HomeView(authViewModel: authViewModel)
+            //HomeView(authViewModel: authViewModel)
+            GameList()
         }
     }
 }
@@ -174,7 +175,7 @@ struct Login : View {
             .padding()
             // bottom padding...
             .padding(.bottom, 65)
-            .background(Color("Color2"))
+            .background(.black)
             .clipShape(CShape())
             .contentShape(CShape())
             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: -5)
@@ -304,7 +305,7 @@ struct SignUP : View {
             .padding()
             // bottom padding...
             .padding(.bottom, 65)
-            .background(Color("Color2"))
+            .background(.black)
             .clipShape(CShape1())
             // clipping the content shape also for tap gesture...
             .contentShape(CShape1())
