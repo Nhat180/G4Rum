@@ -13,7 +13,8 @@ import FirebaseAuth
 class AuthViewModel: ObservableObject {
     @Published var authLoading = false
     @Published var isLogin = false
-    @Published var error = false
+    @Published var errorSignIn = false
+    @Published var errorSignUp = false
     
     func signUp(email: String, password: String) {
         self.authLoading = true
@@ -21,14 +22,14 @@ class AuthViewModel: ObservableObject {
             guard error == nil else {
                 print(error?.localizedDescription ?? "")
                 self.authLoading = false
-                self.error = true
+                self.errorSignUp = true
                 return
             }
             switch result {
                 case .none:
                     print("Could not create account.")
                     self.authLoading = false
-                    self.error = true
+                    self.errorSignUp = true
                 case .some(_):
                     print("User created")
                     self.authLoading = false
@@ -42,11 +43,11 @@ class AuthViewModel: ObservableObject {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 print(error?.localizedDescription ?? "")
-                self.error = true
+                self.errorSignIn = true
                 self.authLoading = false
             } else {
                 print("success")
-                self.error = false
+                self.errorSignIn = false
                 self.authLoading = false
                 guard let user = result?.user else {
                         print("No user")
@@ -62,7 +63,8 @@ class AuthViewModel: ObservableObject {
         do {
             self.isLogin = false
             self.authLoading = false
-            self.error = false
+            self.errorSignIn = false
+            self.errorSignUp = false
             try Auth.auth().signOut()
         } catch {
             print("already logged out")
