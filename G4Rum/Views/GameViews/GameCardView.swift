@@ -21,6 +21,8 @@ struct GameCardView: View {
                 VStack {
                     GameInfo(game: game)
                     Divider().overlay(.white).padding(.top, 15)
+                    AboutGame(game: game)
+                    Divider().overlay(.white).padding(.top, 15)
                 }
             }
         }

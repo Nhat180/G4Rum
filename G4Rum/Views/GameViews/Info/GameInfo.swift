@@ -9,24 +9,32 @@ import SwiftUI
 
 struct GameInfo: View {
     var game: Game
+    @State private var showPostListView = false
     var body: some View {
         HStack {
             AsyncImage(url: URL(string: game.imageUrl)) { image in
                         image
                             .resizable()
-                            .frame(width: 150, height: 150)
+                            .frame(width: 200, height: 200)
                             .clipShape(Rectangle())
+                            .padding(.leading, 5)
+                            .padding(.top, 10)
                     } placeholder: {
                         Color.gray
                     }
-                    .frame(width: 150, height: 150)
+                    .frame(width: 200, height: 200)
                     .clipShape(Rectangle())
+                    .padding(.leading, 5)
+                    .padding(.top, 10)
             VStack {
+                Spacer()
                 Text(game.name)
-                    .font(.system(size: 30))
-                    .bold().foregroundColor(.white).offset(x: 10)
+                    .font(.system(size: 25))
+                    .bold().foregroundColor(.white)
+                    .offset(x: 10)
                     .frame(maxWidth: .infinity, alignment:.leading)
                     .padding(2)
+                Spacer()
                 Text(game.developer)
                     .font(.system(size: 16))
                     .bold().foregroundColor(.white)
@@ -38,33 +46,25 @@ struct GameInfo: View {
                     .bold().foregroundColor(.white)
                     .offset(x: 10, y: 10)
                     .frame(maxWidth: .infinity, alignment:.leading)
+                
+                NavigationLink("",destination: PostListView(), isActive: $showPostListView)
+                Button(action: {
+                    showPostListView.toggle()
+                   }, label: {
+                       Capsule()
+                           .fill(Color.blue)
+                           .padding(10)
+                           .frame(width: 100, height: 60)
+                           .overlay(Text("FORUMS")
+                           .font(.system(size: 16))
+                           .fontWeight(.bold)
+                           .foregroundColor(.white))
+                   }).offset(x: -5).frame(maxWidth: .infinity, alignment:.leading)
             }
         }
         Divider().overlay(.white).padding(.top, 10).padding(.bottom, 15)
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-//                VStack {
-//                    Text("RATINGS")
-//                        .font(.system(size: 18))
-//                        .bold().foregroundColor(.white)
-//                        //.offset(x: -75, y: 1)
-//                    Text(game.ratings + "/5")
-//                        .font(.system(size: 28))
-//                        .bold().foregroundColor(.white)
-//                        //.offset(x: -75, y: 1).padding(.trailing, 5)
-//                }
-//                Divider().frame(height: 100)
-//                        .overlay(.white).offset(x: -20)
-//                VStack {
-//                    Text("AGE")
-//                        .font(.system(size: 18))
-//                        .bold().foregroundColor(.white)
-//                        //.offset(x: 65).padding(.trailing, 5)
-//                    Text(game.minAge)
-//                        .font(.system(size: 28))
-//                        .bold().foregroundColor(.white)
-//                        //.offset(x: 65).padding(.leading, 5)
-//                }
                 VStack {
                     Text("RATINGS")
                         .foregroundColor(.white)
@@ -78,11 +78,32 @@ struct GameInfo: View {
                 VStack(alignment: .center) {
                     Text("AGE")
                         .foregroundColor(.white)
-                        .font(.system(size: 18))
-                    Text("18+")
+                        .font(.system(size: 18)).padding(.leading, 20)
+                    Text(game.minAge)
                         .foregroundColor(.white)
-                        .font(.system(size: 28))
+                        .font(.system(size: 28)).padding(.leading, 20)
                 }
+                Divider().frame(height: 50)
+                    .overlay(.white).padding(.leading, 20)
+                VStack(alignment: .center) {
+                    Text("SIZE")
+                        .foregroundColor(.white)
+                        .font(.system(size: 18)).padding(.leading, 20)
+                    Text(game.size)
+                        .foregroundColor(.white)
+                        .font(.system(size: 28)).padding(.leading, 20)
+                }
+                Divider().frame(height: 50)
+                    .overlay(.white).padding(.leading, 20)
+                VStack(alignment: .center) {
+                    Text("GENRE")
+                        .foregroundColor(.white)
+                        .font(.system(size: 18)).padding(.leading, 20)
+                    Text(game.genre)
+                        .foregroundColor(.white)
+                        .font(.system(size: 28)).padding(.leading, 20)
+                }
+
             }
         }
     }

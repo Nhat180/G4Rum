@@ -51,13 +51,13 @@ struct GameListView: View {
                 .navigationBarTitle(Text("Game List 🎮"))
             }
             .listStyle(.plain)
-            .onAppear() {
-                self.gameViewModel.getAllGames(genre: "action")
-            }
         }
         .disableAutocorrection(true)
         .accentColor(.white)
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .onAppear() {
+            self.gameViewModel.getAllGames(genre: "action")
+        }
     }
 }
 
