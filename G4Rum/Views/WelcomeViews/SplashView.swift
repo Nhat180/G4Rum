@@ -28,8 +28,8 @@ struct SplashView: View {
                             OnboardingView(showOnboarding: $showOnboarding)
                         })
                 } else {
-                    //HomeView(authViewModel: authViewModel)
-                    GameList()
+                    HomeView(authViewModel: authViewModel)
+                    //GameListView() // đang test nên đừng xoá
                 }
                 
             } else {
