@@ -16,8 +16,8 @@ struct LoginSignupView: View {
                 // for light status bar...
                 .preferredColorScheme(.dark)
         } else {
-            //HomeView(authViewModel: authViewModel)
-            GameList()
+            HomeView(authViewModel: authViewModel)
+            //GameListView() // đang test nên đừng xoá
         }
     }
 }
