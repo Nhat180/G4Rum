@@ -34,6 +34,7 @@ struct GameInfo: View {
                     .offset(x: 10)
                     .frame(maxWidth: .infinity, alignment:.leading)
                     .padding(2)
+                    .padding(.trailing, 5)
                 Spacer()
                 Text(game.developer)
                     .font(.system(size: 16))
