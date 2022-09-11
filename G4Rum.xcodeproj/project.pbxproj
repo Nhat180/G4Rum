@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C08622528CDEDEA007B7932 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C08622328CDEDEA007B7932 /* PlayfairDisplay-Bold.ttf */; };
+		1C08622628CDEDEA007B7932 /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C08622428CDEDEA007B7932 /* PlayfairDisplay-Regular.ttf */; };
+		1C08622B28CDF627007B7932 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C08622A28CDF627007B7932 /* FontManager.swift */; };
 		842EC48828C9CF6E002854E2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EC48728C9CF6E002854E2 /* AuthViewModel.swift */; };
 		9F203C9E28C763680028A07F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9D28C763680028A07F /* HomeView.swift */; };
 		9F203CA028C9B75B0028A07F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9F28C9B75B0028A07F /* SplashView.swift */; };
@@ -40,6 +43,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C08622328CDEDEA007B7932 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		1C08622428CDEDEA007B7932 /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		1C08622728CDF3CD007B7932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1C08622A28CDF627007B7932 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		842EC48728C9CF6E002854E2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		9F203C9D28C763680028A07F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = G4Rum/Views/HomeViews/HomeView.swift; sourceTree = SOURCE_ROOT; };
 		9F203C9F28C9B75B0028A07F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -84,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C08622228CDEDEA007B7932 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1C08622328CDEDEA007B7932 /* PlayfairDisplay-Bold.ttf */,
+				1C08622428CDEDEA007B7932 /* PlayfairDisplay-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		9F203CA528C9BDA40028A07F /* ColorConstants */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +194,8 @@
 		A0A8ED0628C63DF200A6C13D /* G4Rum */ = {
 			isa = PBXGroup;
 			children = (
+				1C08622728CDF3CD007B7932 /* Info.plist */,
+				1C08622228CDEDEA007B7932 /* Fonts */,
 				9F203CA528C9BDA40028A07F /* ColorConstants */,
 				A073E4F528C9038000166899 /* Lottie */,
 				A080D2D328C86866002B70D6 /* Views */,
@@ -208,6 +226,7 @@
 				A0E8C8FD28C7497E00E0389D /* Post.swift */,
 				A0E8C8FF28C7557400E0389D /* User.swift */,
 				A073E4F028C900F800166899 /* Category.swift */,
+				1C08622A28CDF627007B7932 /* FontManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,7 +308,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C08622528CDEDEA007B7932 /* PlayfairDisplay-Bold.ttf in Resources */,
 				9F203CAB28C9C2B50028A07F /* social.json in Resources */,
+				1C08622628CDEDEA007B7932 /* PlayfairDisplay-Regular.ttf in Resources */,
 				A0A8ED0F28C63DF700A6C13D /* Preview Assets.xcassets in Resources */,
 				A0A8ED0C28C63DF700A6C13D /* Assets.xcassets in Resources */,
 				9F203CAD28C9C81F0028A07F /* rating.json in Resources */,
@@ -316,6 +337,7 @@
 				842EC48828C9CF6E002854E2 /* AuthViewModel.swift in Sources */,
 				A06C0C6D28CC809600AF4871 /* GameInfo.swift in Sources */,
 				9F203CA028C9B75B0028A07F /* SplashView.swift in Sources */,
+				1C08622B28CDF627007B7932 /* FontManager.swift in Sources */,
 				A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */,
 				A0E8C8FC28C738B700E0389D /* Comment.swift in Sources */,
 				9F203CA228C9B7EB0028A07F /* LottieView.swift in Sources */,
@@ -457,6 +479,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"G4Rum/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = G4Rum/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -485,6 +509,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"G4Rum/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = G4Rum/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
