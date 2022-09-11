@@ -25,7 +25,7 @@ struct GameRowView: View {
                             image
                                 .resizable()
                                 .frame(width: 98, height: 98)
-                                .clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
+                                //.clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
                         } placeholder: {
                             Color.gray
                         }
