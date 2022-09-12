@@ -3,7 +3,8 @@
 //  G4Rum
 //
 //  Created by Thang, Ta Quoc on 06/09/2022.
-//
+// https://www.youtube.com/watch?v=84gRTVNvOz4
+// https://swiftuirecipes.com/blog/swiftui-toast
 
 import SwiftUI
 
@@ -102,6 +103,11 @@ struct Login : View {
     @State var pass = ""
     @Binding var index : Int
     
+    @State var hiddenPassword: Bool = true
+    
+    @State private var validation = false
+    @State var alertStr = ""
+    
     var body: some View{
         ZStack(alignment: .bottom) {
                 VStack{
@@ -136,28 +142,25 @@ struct Login : View {
                     
                     VStack{
                         HStack(spacing: 15){
-                            Image(systemName: "eye.slash.fill")
+                            Image(systemName: hiddenPassword ? "eye.slash.fill" : "eye.fill")
                                 .foregroundColor(ColorConstants.darkRed)
+                                .onTapGesture {
+                                    hiddenPassword.toggle()
+                                }
                             
-                            SecureField("Password", text: self.$pass)
+                            if hiddenPassword {
+                                SecureField("Password", text: self.$pass)
+                            } else {
+                                TextField("Password", text: self.$pass)
+                            }
                         }
                         
                         Divider().background(Color.white.opacity(0.5))
                     }
                     .padding(.horizontal)
                     .padding(.top, 30)
+                    .padding(.bottom, 65)
                     
-                    HStack{
-                        Spacer(minLength: 0)
-                        
-                        Button(action: {
-                        }) {
-                            Text("Forget Password?")
-                                .foregroundColor(Color.white.opacity(0.6))
-                        }
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, 30)
                 }
             .padding()
             // bottom padding...
@@ -177,7 +180,27 @@ struct Login : View {
             // Button...
             
             Button(action: {
-                self.authViewModel.signIn(email: email, password: pass)
+                let checkValidEmail = isValidEmail(testStr: email)
+                if email == "" || pass == "" {
+                    if email == "" {
+                        alertStr = "Please enter the email"
+                    } else {
+                        alertStr = "Please enter the password"
+                    }
+                    validation = true
+                } else {
+                    if checkValidEmail {
+                        if pass.count >= 6 {
+                            self.authViewModel.signIn(email: email, password: pass)
+                        } else {
+                            alertStr = "The password is required more than 6 characters"
+                            validation = true
+                        }
+                    } else {
+                        alertStr = "The email is invalid"
+                        validation = true
+                    }
+                }
             }) {
                 if (authViewModel.authLoading) {
                     ProgressView()
@@ -203,8 +226,11 @@ struct Login : View {
             // moving view down..
             .offset(y: 25)
             .opacity(self.index == 0 ? 1 : 0)
-            .disabled(!authViewModel.authLoading && !email.isEmpty && !pass.isEmpty ? false : true)
+            .disabled(!authViewModel.authLoading ? false : true)
         }
+        .toast(message: alertStr,
+            isShowing: $validation,
+            duration: Toast.short)
     }
 }
 
@@ -214,11 +240,14 @@ struct SignUP : View {
     @ObservedObject var authViewModel = AuthViewModel()
     @State var email = ""
     @State var pass = ""
-    @State var Repass = ""
+    @State var rePass = ""
     @Binding var index : Int
     
     @State var hiddenPassword: Bool = true
     @State var hiddenRePassword: Bool = true
+    
+    @State private var validation = false
+    @State var alertStr = ""
     
     var body: some View{
         ZStack(alignment: .bottom) {
@@ -281,9 +310,9 @@ struct SignUP : View {
                             }
                         
                         if hiddenRePassword {
-                            SecureField("Re-password", text: self.$Repass)
+                            SecureField("Re-password", text: self.$rePass)
                         } else {
-                            TextField("Re-password", text: self.$Repass)
+                            TextField("Re-password", text: self.$rePass)
                         }
                     }
                     
@@ -312,12 +341,35 @@ struct SignUP : View {
             // Button...
             
             Button(action: {
-                if pass == Repass {
-                    print("Equal")
+                let checkValidEmail = isValidEmail(testStr: email)
+                if email == "" || pass == "" || rePass == "" {
+                    if email == "" {
+                        alertStr = "Please enter the email"
+                    } else if pass == "" {
+                        alertStr = "Please enter the password"
+                    } else {
+                        alertStr = "Please enter the re-password"
+                    }
+                    validation = true
                 } else {
-                    print("Not Equal")
+                    if checkValidEmail {
+                        if pass == rePass && pass.count >= 6 && rePass.count >= 6 {
+                            authViewModel.signUp(email: email, password: pass)
+                        } else {
+                            if pass.count < 6 {
+                                alertStr = "The password is required more than 6 characters"
+                            } else if rePass.count < 6 {
+                                alertStr = "The repassword is required more than 6 characters"
+                            } else {
+                                alertStr = "The password and repassword are not the same"
+                            }
+                            validation = true
+                        }
+                    } else {
+                        alertStr = "The email is invalid"
+                        validation = true
+                    }
                 }
-                //authViewModel.signUp(email: email, password: pass)
             }) {
                 if (authViewModel.authLoading) {
                     ProgressView()
@@ -346,6 +398,17 @@ struct SignUP : View {
             // only button...
             .opacity(self.index == 1 ? 1 : 0)
         }
+        .toast(message: alertStr,
+            isShowing: $validation,
+            duration: Toast.short)
+
     }
 }
 
+// https://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
+func isValidEmail(testStr:String) -> Bool {
+    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+    let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+    return emailTest.evaluate(with: testStr)
+}
