@@ -22,7 +22,7 @@ struct SplashView: View {
     var body: some View {
         ZStack{
             if self.isWelcomeActive {
-                if(user == nil) {
+                if(!authViewModel.isLogin) {
                     LoginSignupView(authViewModel: authViewModel)
                         .fullScreenCover(isPresented: $showOnboarding, content: {
                             OnboardingView(showOnboarding: $showOnboarding)
@@ -51,6 +51,9 @@ struct SplashView: View {
                 withAnimation {
                     self.isWelcomeActive = true
                 }
+            }
+            if (user != nil) {
+                authViewModel.updateLogin()
             }
         }
     }

@@ -59,6 +59,10 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    func updateLogin() {
+        self.isLogin = true
+    }
+    
     func signOut() {
         do {
             self.isLogin = false
