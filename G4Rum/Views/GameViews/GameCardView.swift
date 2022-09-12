@@ -12,8 +12,8 @@ struct GameCardView: View {
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [
+                .black,
                 ColorConstants.darkRed,
-                ColorConstants.lightBlue
             ]),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing)

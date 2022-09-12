@@ -54,7 +54,7 @@ struct GameInfo: View {
                        Capsule()
                            .fill(Color.blue)
                            .padding(10)
-                           .frame(width: 100, height: 60)
+                           .frame(width: 120, height: 60)
                            .overlay(Text("FORUMS")
                            .font(.system(size: 16))
                            .fontWeight(.bold)
@@ -69,7 +69,7 @@ struct GameInfo: View {
                     Text("RATINGS")
                         .foregroundColor(.white)
                         .font(.system(size: 18)).padding(.leading, 20)
-                    Text("4.5/5")
+                    Text(game.ratings + "/5")
                         .foregroundColor(.white)
                         .font(.system(size: 28)).padding(.leading, 20)
                 }
