@@ -19,6 +19,7 @@
 		9F203CA928C9C10B0028A07F /* team.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F203CA828C9C10B0028A07F /* team.json */; };
 		9F203CAB28C9C2B50028A07F /* social.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F203CAA28C9C2B50028A07F /* social.json */; };
 		9F203CAD28C9C81F0028A07F /* rating.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F203CAC28C9C81F0028A07F /* rating.json */; };
+		9FB4982628CF6A7200E1E8D9 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB4982528CF6A7200E1E8D9 /* ToastViewModifier.swift */; };
 		A027100028CB883A00B21397 /* GameRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0270FFF28CB883A00B21397 /* GameRowView.swift */; };
 		A027100228CB927200B21397 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A027100128CB927200B21397 /* GameListView.swift */; };
 		A027100428CB981800B21397 /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A027100328CB981800B21397 /* LoginSignupView.swift */; };
@@ -60,6 +61,7 @@
 		9F203CA828C9C10B0028A07F /* team.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = team.json; sourceTree = "<group>"; };
 		9F203CAA28C9C2B50028A07F /* social.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = social.json; sourceTree = "<group>"; };
 		9F203CAC28C9C81F0028A07F /* rating.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rating.json; sourceTree = "<group>"; };
+		9FB4982528CF6A7200E1E8D9 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		A0270FFF28CB883A00B21397 /* GameRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRowView.swift; sourceTree = "<group>"; };
 		A027100128CB927200B21397 /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 		A027100328CB981800B21397 /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 				9F203CA628C9BDB80028A07F /* ColorConstants.swift */,
 			);
 			path = ColorConstants;
+			sourceTree = "<group>";
+		};
+		9FB4982428CF6A4500E1E8D9 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				9FB4982528CF6A7200E1E8D9 /* ToastViewModifier.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		A0270FFB28CB850700B21397 /* GameViews */ = {
@@ -185,6 +195,7 @@
 		A080D2D328C86866002B70D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9FB4982428CF6A4500E1E8D9 /* Toast */,
 				A040CA6D28CE31D300F5D22F /* PostViews */,
 				A0270FFE28CB852B00B21397 /* HomeViews */,
 				A0270FFD28CB852200B21397 /* WelcomeViews */,
@@ -356,6 +367,7 @@
 				A0EFECCE28C7091700801BFD /* Game.swift in Sources */,
 				A0E8C90028C7557400E0389D /* User.swift in Sources */,
 				A027100428CB981800B21397 /* LoginSignupView.swift in Sources */,
+				9FB4982628CF6A7200E1E8D9 /* ToastViewModifier.swift in Sources */,
 				842EC48828C9CF6E002854E2 /* AuthViewModel.swift in Sources */,
 				A06C0C6D28CC809600AF4871 /* GameInfo.swift in Sources */,
 				A0DE29A628CEE1BF00AC7E3E /* PostDetailView.swift in Sources */,
