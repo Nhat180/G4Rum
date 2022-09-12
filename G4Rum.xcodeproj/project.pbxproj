@@ -30,6 +30,7 @@
 		A073E4F428C902F200166899 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A073E4F328C902F200166899 /* Lottie */; };
 		A073E4F728C903A100166899 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A073E4F628C903A100166899 /* OnboardingView.swift */; };
 		A08B51A828CBB3F5005E6142 /* GameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08B51A728CBB3F4005E6142 /* GameCardView.swift */; };
+		A092255C28CFAD60007EE91C /* GameRatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092255B28CFAD60007EE91C /* GameRatingViewModel.swift */; };
 		A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8ED0728C63DF200A6C13D /* G4RumApp.swift */; };
 		A0A8ED0A28C63DF200A6C13D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8ED0928C63DF200A6C13D /* ContentView.swift */; };
 		A0A8ED0C28C63DF700A6C13D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A8ED0B28C63DF700A6C13D /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		A073E4F028C900F800166899 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A073E4F628C903A100166899 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A08B51A728CBB3F4005E6142 /* GameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardView.swift; sourceTree = "<group>"; };
+		A092255B28CFAD60007EE91C /* GameRatingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRatingViewModel.swift; sourceTree = "<group>"; };
 		A0A8ED0428C63DF200A6C13D /* G4Rum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = G4Rum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A8ED0728C63DF200A6C13D /* G4RumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = G4RumApp.swift; sourceTree = "<group>"; };
 		A0A8ED0928C63DF200A6C13D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				A0FA0D3828C7A8E800AC09EA /* GameViewModel.swift */,
 				842EC48728C9CF6E002854E2 /* AuthViewModel.swift */,
 				A0DE29A728CEE4D700AC7E3E /* PostViewModel.swift */,
+				A092255B28CFAD60007EE91C /* GameRatingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				1C08622B28CDF627007B7932 /* FontManager.swift in Sources */,
 				A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */,
 				A0E8C8FC28C738B700E0389D /* Comment.swift in Sources */,
+				A092255C28CFAD60007EE91C /* GameRatingViewModel.swift in Sources */,
 				9F203CA228C9B7EB0028A07F /* LottieView.swift in Sources */,
 				A027100228CB927200B21397 /* GameListView.swift in Sources */,
 				A040CA6F28CE5E2B00F5D22F /* PostListView.swift in Sources */,

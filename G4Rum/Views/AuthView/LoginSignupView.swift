@@ -107,6 +107,7 @@ struct Login : View {
     
     @State private var validation = false
     @State var alertStr = ""
+    @State private var loginAlert = "Sorry, the mail or password is not correct"
     
     var body: some View{
         ZStack(alignment: .bottom) {
@@ -228,8 +229,8 @@ struct Login : View {
             .opacity(self.index == 0 ? 1 : 0)
             .disabled(!authViewModel.authLoading ? false : true)
         }
-        .toast(message: alertStr,
-            isShowing: $validation,
+        .toast(message: (authViewModel.errorSignIn) ? loginAlert : alertStr,
+               isShowing: (authViewModel.errorSignIn) ? $authViewModel.errorSignIn : $validation,
             duration: Toast.short)
     }
 }
@@ -248,6 +249,7 @@ struct SignUP : View {
     
     @State private var validation = false
     @State var alertStr = ""
+    @State private var signUpAlert = "Cannot create account with this mail! Try another, please."
     
     var body: some View{
         ZStack(alignment: .bottom) {
@@ -397,9 +399,10 @@ struct SignUP : View {
             // hiding view when its in background...
             // only button...
             .opacity(self.index == 1 ? 1 : 0)
+            .disabled(!authViewModel.authLoading ? false : true)
         }
-        .toast(message: alertStr,
-            isShowing: $validation,
+        .toast(message: (authViewModel.errorSignUp) ? signUpAlert : alertStr,
+               isShowing: (authViewModel.errorSignUp) ? $authViewModel.errorSignUp : $validation,
             duration: Toast.short)
 
     }

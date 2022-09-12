@@ -36,21 +36,25 @@ struct GameListView: View {
     
     var body: some View {
         NavigationView {
-            List{
-                ForEach(filteredGame, id: \.id) {
-                    game in
-                    ZStack {
-                        NavigationLink(destination: GameCardView(game: game)) {
-                                EmptyView()
-                        }.buttonStyle(PlainButtonStyle())
-                                GameRowView(game: game)
+            if (filteredGame.isEmpty) {
+                Text("No games found")
+            } else {
+                List{
+                    ForEach(filteredGame, id: \.id) {
+                        game in
+                        ZStack {
+                            NavigationLink(destination: GameCardView(game: game)) {
+                                    EmptyView()
+                            }.buttonStyle(PlainButtonStyle())
+                                    GameRowView(game: game)
+                        }
                     }
+                    .listRowSeparator(.hidden)
+                    .padding(.top,5)
+                    .navigationBarTitle(Text("Game List 🎮"))
                 }
-                .listRowSeparator(.hidden)
-                .padding(.top,5)
-                .navigationBarTitle(Text("Game List 🎮"))
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
         }
         .disableAutocorrection(true)
         .accentColor(.white)
