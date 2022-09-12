@@ -15,7 +15,7 @@ struct GameListView: View {
     
     init() {
         coloredNavAppearance.configureWithOpaqueBackground()
-        coloredNavAppearance.backgroundColor = UIColor(red: 0.90, green: 0.00, blue: 0.16, alpha: 1)
+        coloredNavAppearance.backgroundColor = UIColor(red: 0.50, green: 0.00, blue: 0.00, alpha: 1)
         coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
                 coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().standardAppearance = coloredNavAppearance
