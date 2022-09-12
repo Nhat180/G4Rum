@@ -13,6 +13,4 @@ class PostViewModel: ObservableObject {
     @Published var posts = [Post]()
     
     private var db = Firestore.firestore()
-    
-    func get
 }
