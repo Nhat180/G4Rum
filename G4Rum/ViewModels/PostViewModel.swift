@@ -13,4 +13,14 @@ class PostViewModel: ObservableObject {
     @Published var posts = [Post]()
     
     private var db = Firestore.firestore()
+    
+    func getAllPosts(gameID: String) {
+        db.collection("games").document(gameID).collection("posts").addSnapshotListener {(querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+        }
+    }
 }
