@@ -102,17 +102,11 @@ struct Login : View {
     @State var pass = ""
     @Binding var index : Int
     
-    
     var body: some View{
-        
         ZStack(alignment: .bottom) {
-            
                 VStack{
-                    
                     HStack{
-                        
                         VStack(spacing: 10){
-                            
                             Text("Login")
                                 .foregroundColor(self.index == 0 ? .white : .gray)
                                 .font(.title)
@@ -122,7 +116,6 @@ struct Login : View {
                                 .fill(self.index == 0 ? .white : Color.clear)
                                 .frame(width: 100, height: 5)
                         }
-                        
                         Spacer(minLength: 0)
                     }
                     .padding(.top, 20)// for top curve...
@@ -130,7 +123,6 @@ struct Login : View {
                     VStack{
                         
                         HStack(spacing: 15){
-                            
                             Image(systemName: "envelope.fill")
                                 .foregroundColor(ColorConstants.darkRed)
                             
@@ -143,9 +135,7 @@ struct Login : View {
                     .padding(.top, 40)
                     
                     VStack{
-                        
                         HStack(spacing: 15){
-                            
                             Image(systemName: "eye.slash.fill")
                                 .foregroundColor(ColorConstants.darkRed)
                             
@@ -158,13 +148,10 @@ struct Login : View {
                     .padding(.top, 30)
                     
                     HStack{
-                        
                         Spacer(minLength: 0)
                         
                         Button(action: {
-                            
                         }) {
-                            
                             Text("Forget Password?")
                                 .foregroundColor(Color.white.opacity(0.6))
                         }
@@ -230,18 +217,16 @@ struct SignUP : View {
     @State var Repass = ""
     @Binding var index : Int
     
+    @State var hiddenPassword: Bool = true
+    @State var hiddenRePassword: Bool = true
+    
     var body: some View{
-        
         ZStack(alignment: .bottom) {
-            
             VStack{
-                
                 HStack{
-                    
                     Spacer(minLength: 0)
                     
                     VStack(spacing: 10){
-                        
                         Text("SignUp")
                             .foregroundColor(self.index == 1 ? .white : .gray)
                             .font(.title)
@@ -255,13 +240,11 @@ struct SignUP : View {
                 .padding(.top, 20)// for top curve...
                 
                 VStack{
-                    
                     HStack(spacing: 15){
-                        
-                        Image(systemName: "person.fill")
+                        Image(systemName: "envelope.fill")
                         .foregroundColor(ColorConstants.darkRed)
                         
-                        TextField("Username", text: self.$email)
+                        TextField("Email Address", text: self.$email)
                     }
                     
                     Divider().background(Color.white.opacity(0.5))
@@ -270,13 +253,18 @@ struct SignUP : View {
                 .padding(.top, 40)
                 
                 VStack{
-                    
                     HStack(spacing: 15){
+                        Image(systemName: hiddenPassword ? "eye.slash.fill" : "eye.fill")
+                            .foregroundColor(ColorConstants.darkRed)
+                            .onTapGesture {
+                                hiddenPassword.toggle()
+                            }
                         
-                        Image(systemName: "envelope.fill")
-                        .foregroundColor(ColorConstants.darkRed)
-                        
-                        SecureField("Email Address", text: self.$pass)
+                        if hiddenPassword {
+                            SecureField("Password", text: self.$pass)
+                        } else {
+                            TextField("Password", text: self.$pass)
+                        }
                     }
                     
                     Divider().background(Color.white.opacity(0.5))
@@ -284,17 +272,19 @@ struct SignUP : View {
                 .padding(.horizontal)
                 .padding(.top, 30)
                 
-                // replacing forget password with reenter password...
-                // so same height will be maintained...
-                
                 VStack{
-                    
                     HStack(spacing: 15){
+                        Image(systemName: hiddenRePassword ? "eye.slash.fill" : "eye.fill")
+                            .foregroundColor(ColorConstants.darkRed)
+                            .onTapGesture {
+                                hiddenRePassword.toggle()
+                            }
                         
-                        Image(systemName: "eye.slash.fill")
-                        .foregroundColor(ColorConstants.darkRed)
-                        
-                        SecureField("Password", text: self.$Repass)
+                        if hiddenRePassword {
+                            SecureField("Re-password", text: self.$Repass)
+                        } else {
+                            TextField("Re-password", text: self.$Repass)
+                        }
                     }
                     
                     Divider().background(Color.white.opacity(0.5))
@@ -322,7 +312,12 @@ struct SignUP : View {
             // Button...
             
             Button(action: {
-                authViewModel.signUp(email: email, password: pass)
+                if pass == Repass {
+                    print("Equal")
+                } else {
+                    print("Not Equal")
+                }
+                //authViewModel.signUp(email: email, password: pass)
             }) {
                 if (authViewModel.authLoading) {
                     ProgressView()
