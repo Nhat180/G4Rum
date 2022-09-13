@@ -53,16 +53,37 @@ class GameRatingViewModel: ObservableObject {
     }
     
     func addComment(game: Game, username: String, text: String, rating: Int) {
+        let currentDateTime = Date()
+        let formatterID = DateFormatter()
+        let formatterDate = DateFormatter()
+        formatterID.dateFormat = "yyyy-MM-d HH:mm:ss"
+        formatterDate.dateFormat = "d/MM/yyyy"
+        
+        updateGameInfo(game: game, rating: rating)
+        let ratingDb = db.collection("games").document(game.id).collection("reviews")
+            .document(formatterID.string(from: currentDateTime) + "_" + username)
+        ratingDb.setData([
+            "username": username,
+            "text": text,
+            "rating": rating,
+            "createdDate": formatterDate.string(from: currentDateTime)
+        ])
+    }
+    
+    func updateGameInfo(game: Game, rating: Int) {
         let currentRating = convertStringToDouble(str: game.ratings)
-        var newRating = (currentRating * Double(game.totalRating) + Double(rating)) / (Double(game.totalRating + 1))
+        let newRating = (currentRating * Double(game.totalRating) + Double(rating)) / (Double(game.totalRating + 1))
+        let ratingString: String = String(format: "%.1f", newRating)
         
-        db.collection("games").document(game.id)
-        
+        db.collection("games").document(game.id).updateData([
+            "rating": ratingString,
+            "totalRating": game.totalRating + 1,
+            "totalComment": game.totalComment + 1
+        ])
     }
     
     func convertStringToDouble(str: String) -> Double {
         let myDouble = Double(str) ?? 0
-        print(myDouble)
         return myDouble
     }
 }
