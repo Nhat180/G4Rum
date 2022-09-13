@@ -9,16 +9,19 @@ import SwiftUI
 
 struct AboutGame: View {
     var game: Game
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     @State private var isExpanded: Bool = false
+    
     var body: some View {
         Text("About Game")
-            .font(.system(size: 28))
+            .font(.system(size: width / 15))
             .bold().foregroundColor(.white)
             .offset(y: 10).padding(.leading, 5).padding(.bottom, 2)
             .frame(maxWidth: .infinity, alignment:.leading)
         Text(game.description)
-            .font(.system(size: 18))
-            .bold().foregroundColor(.white)
+            .font(.system(size: width / 25))
+            .foregroundColor(.white)
             .offset(y: 10)
             .padding(.leading, 5)
             .frame(maxWidth: .infinity, alignment:.leading)
@@ -27,7 +30,7 @@ struct AboutGame: View {
             isExpanded = !isExpanded
         }) {
             Text(isExpanded ? "Less" : "More")
-                .font(.system(size: 15)).bold().foregroundColor(Color.blue)
+                .font(.system(size: width / 25)).bold().foregroundColor(Color.blue)
                 .offset(y: 15).padding(.leading, 5)
                 .frame(maxWidth: .infinity, alignment:.leading)
         }
