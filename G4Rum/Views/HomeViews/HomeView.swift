@@ -17,8 +17,13 @@ struct HomeView: View {
         NavigationView  {
             
             ZStack {
-                Color(#colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.937254902, alpha: 1))
-                    .ignoresSafeArea()
+                LinearGradient(gradient: Gradient(colors: [
+                    .black,
+                    ColorConstants.darkRed
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing)
+                .edgesIgnoringSafeArea(.all)
                 
                 ScrollView (showsIndicators: false) {
                     VStack(alignment: .leading) {
@@ -39,7 +44,6 @@ struct HomeView: View {
                                     i in NavigationLink (
                                         destination: GameCardView(game: i), label: {
                                             VStack {
-                                                
                                                 AsyncImage(url: URL(string: i.imageUrl)) { image in
                                                             image
                                                                 .resizable()

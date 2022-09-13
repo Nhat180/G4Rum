@@ -9,40 +9,42 @@ import SwiftUI
 
 struct GameInfo: View {
     var game: Game
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     @State private var showPostListView = false
+    
     var body: some View {
         HStack {
             AsyncImage(url: URL(string: game.imageUrl)) { image in
                         image
                             .resizable()
-                            .frame(width: 200, height: 200)
-                            .clipShape(Rectangle())
-                            .padding(.leading, 5)
-                            .padding(.top, 10)
+                            .frame(width: width / 3, height: width / 3)
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .padding()
                     } placeholder: {
                         Color.gray
                     }
-                    .frame(width: 200, height: 200)
+                    .frame(width: width / 3, height: width / 3)
                     .clipShape(Rectangle())
                     .padding(.leading, 5)
                     .padding(.top, 10)
             VStack {
                 Spacer()
                 Text(game.name)
-                    .font(.system(size: 25))
+                    .font(.system(size: width / 20))
                     .bold().foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment:.leading)
                     .padding(.leading, 5)
                     .padding(.trailing, 8)
                 Spacer()
                 Text(game.developer)
-                    .font(.system(size: 16))
+                    .font(.system(size: width / 30))
                     .bold().foregroundColor(.white)
                     .offset(x: 10, y: 10)
                     .frame(maxWidth: .infinity, alignment:.leading)
         
                 Text("Released: " + game.releaseDate)
-                    .font(.system(size: 16))
+                    .font(.system(size: width / 30))
                     .bold().foregroundColor(.white)
                     .offset(x: 10, y: 10)
                     .frame(maxWidth: .infinity, alignment:.leading)

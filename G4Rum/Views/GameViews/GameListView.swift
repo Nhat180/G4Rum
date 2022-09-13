@@ -13,17 +13,6 @@ struct GameListView: View {
     @StateObject private var gameViewModel = GameViewModel()
     @State var searchText = ""
     
-    init() {
-        coloredNavAppearance.configureWithOpaqueBackground()
-        coloredNavAppearance.backgroundColor = UIColor(red: 0.50, green: 0.00, blue: 0.00, alpha: 1)
-        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-                coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().standardAppearance = coloredNavAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .white
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .black
-    }
-    
     var filteredGame: [Game] {
         if (searchText.isEmpty) {
             return gameViewModel.games
@@ -36,25 +25,33 @@ struct GameListView: View {
     
     var body: some View {
         NavigationView {
-            if (filteredGame.isEmpty) {
-                Text("No games found")
-            } else {
-                List{
-                    ForEach(filteredGame, id: \.id) {
-                        game in
-                        ZStack {
-                            NavigationLink(destination: GameCardView(game: game)) {
-                                    EmptyView()
-                            }.buttonStyle(PlainButtonStyle())
-                                    GameRowView(game: game)
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [
+                    .black,
+                    ColorConstants.darkRed
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing)
+                .edgesIgnoringSafeArea(.all)
+                ScrollView (.vertical, showsIndicators: false) {
+                    if (filteredGame.isEmpty) {
+                        Text("No games found")
+                    } else {
+                        VStack {
+                            ForEach(filteredGame, id: \.id) {
+                                game in NavigationLink(
+                                    destination: GameCardView(game: game), label: {
+                                        GameRowView(game: game)
+                                    })
+                            }
+                            .listRowSeparator(.hidden)
+                            .navigationBarTitle(Text("Game List"))
+                            .background(.clear)
                         }
                     }
-                    .listRowSeparator(.hidden)
-                    .padding(.top,5)
-                    .navigationBarTitle(Text("Game List 🎮"))
                 }
-                .listStyle(.plain)
             }
+            
         }
         .disableAutocorrection(true)
         .accentColor(.white)
