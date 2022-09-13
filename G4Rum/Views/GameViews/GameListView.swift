@@ -57,7 +57,7 @@ struct GameListView: View {
         .accentColor(.white)
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onAppear() {
-            self.gameViewModel.getAllGames(genre: "action")
+            self.gameViewModel.getAllGames(genre: "Action")
         }
     }
 }

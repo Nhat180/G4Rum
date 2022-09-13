@@ -16,85 +16,86 @@ struct HomeView: View {
     let height = UIScreen.main.bounds.height
     
     var body: some View {
-        
-        NavigationView  {
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [
+                .black,
+                ColorConstants.darkRed
+            ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.all)
             
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: [
-                    .black,
-                    ColorConstants.darkRed
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
-                
-                ScrollView (showsIndicators: false) {
-                    VStack(alignment: .leading) {
-                        
-                        TitleView()
-                            .padding()
+            ScrollView (showsIndicators: false) {
+                VStack(alignment: .leading) {
+                    
+                    TitleView()
+                        .padding()
+                    
+                    Divider()
+                        .overlay(.white)
+                        .padding()
 
-                        //SearchBar(search: $search)
-                        Spacer()
-                        Text("Trending Game")
-                            //.font(.custom("PlayfairDisplay-Bold", size: width / 10))
-                            .font(.system(size: width / 15))
-                            .bold()
-                            .padding(.horizontal)
-                            .foregroundColor(.white)
-                        
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack (spacing:0) {
-                                ForEach (gameViewModel.randomGames) {
-                                    i in NavigationLink (
-                                        destination: GameCardView(game: i), label: {
-                                            VStack {
-                                                AsyncImage(url: URL(string: i.imageUrl)) { image in
-                                                            image
-                                                                .resizable()
-                                                                .frame(width: width / 2, height: width / 2)
-                                                                .cornerRadius(20.0)
-                                                        } placeholder: {
-                                                            Color.gray
-                                                        }
+                    Text("Trending Game")
+                        //.font(.custom("PlayfairDisplay-Bold", size: width / 10))
+                        .font(.system(size: width / 15))
+                        .bold()
+                        .padding(.horizontal)
+                        .foregroundColor(.white)
+                    
+                    ScrollView (.horizontal, showsIndicators: false) {
+                        HStack (spacing:0) {
+                            ForEach (gameViewModel.randomGames) {
+                                i in NavigationLink (
+                                    destination: GameCardView(game: i), label: {
+                                        VStack {
+                                            AsyncImage(url: URL(string: i.imageUrl)) { image in
+                                                        image
+                                                            .resizable()
+                                                            .frame(width: width / 2, height: width / 2)
+                                                            .cornerRadius(20.0)
+                                                    } placeholder: {
+                                                        Color.gray
+                                                    }
+                                            
+                                            Spacer()
+                                            Text(i.name)
+                                                .font(.system(size: 16))
+                                                .bold()
+                                                .foregroundColor(Color("Primary"))
+                                            Spacer()
+                                            HStack (spacing: 5) {
+                                                Text("Rate: " + i.ratings + "/5")
+                                                    .font(.system(size: 15))
+                                                    .foregroundColor(Color(.white))
+                                                Spacer()
+                                                Text( "Genre: " + i.genre)
+                                                    .font(.system(size: 15))
+                                                    .foregroundColor(Color(.white))
                                                 
-                                                Spacer()
-                                                Text(i.name)
-                                                    .font(.system(size: 16))
-                                                    .bold()
-                                                    .foregroundColor(Color("Primary"))
-                                                Spacer()
-                                                HStack (spacing: 5) {
-                                                    Text("Rate: " + i.ratings + "/5")
-                                                        .font(.system(size: 15))
-                                                        .foregroundColor(Color(.white))
-                                                    Spacer()
-                                                    Text( "Genre: " + i.genre)
-                                                        .font(.system(size: 15))
-                                                        .foregroundColor(Color(.white))
-                                                    
-                                                }
                                             }
-                                            .frame(width: 210, height: 250 * (210/210))
-                                            .padding()
-                                            .background(.clear)
-                                            .cornerRadius(20.0)
-                                        })
-                                    Spacer()
+                                        }
+                                        .frame(width: 210, height: 250 * (210/210))
+                                        .padding()
+                                        .background(.clear)
+                                        .cornerRadius(20.0)
+                                    })
+                                Spacer()
 
-                                }
                             }
                         }
-                        Spacer()
-                        Text("Categories")
-                            //.font(.custom("PlayfairDisplay-Bold", size: 24))
-                            .font(.system(size: width / 15))
-                            .bold()
-                            .padding(.horizontal)
-                            .foregroundColor(.white)
                     }
+                    Divider()
+                        .overlay(.white)
+                        .padding()
+                    Text("Categories")
+                        //.font(.custom("PlayfairDisplay-Bold", size: 24))
+                        .font(.system(size: width / 15))
+                        .bold()
+                        .padding(.horizontal)
+                        .foregroundColor(.white)
                 }
             }
+            
             
         }
         .onAppear(){
