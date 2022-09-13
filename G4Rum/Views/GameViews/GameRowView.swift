@@ -8,18 +8,14 @@
 import SwiftUI
 
 struct GameRowView: View {
+    
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    
     var game: Game
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 20, style: .continuous).fill(
-                LinearGradient(gradient: Gradient(colors: [
-                    ColorConstants.darkRed,
-                    ColorConstants.blue
-                ]),
-                               startPoint: .topLeading,
-                               endPoint: .bottomTrailing)
-            )
+        VStack {
             HStack {
                 AsyncImage(url: URL(string: game.imageUrl)) { image in
                             image
@@ -31,7 +27,8 @@ struct GameRowView: View {
                         }
                         .frame(width: 98, height: 98)
                         //.clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
-                
+                Divider()
+                    .overlay(.gray)
                 VStack {
                     Text(game.name)
                         .font(.system(size: 16))
@@ -53,7 +50,12 @@ struct GameRowView: View {
                     .bold().padding(.trailing, 10)
                 //.frame(maxWidth: .infinity, alignment:.leading)
             }
+            Divider()
+                .frame(width: width / 10 * 9)
+                .overlay(.gray)
+
         }
+        .padding([.leading, .trailing], width / 20)
     }
 }
 

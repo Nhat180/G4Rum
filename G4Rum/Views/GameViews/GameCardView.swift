@@ -24,6 +24,7 @@ struct GameCardView: View {
                     AboutGame(game: game)
                     Divider().overlay(.white).padding(.top, 15)
                 }
+                .padding()
             }
         }
         .edgesIgnoringSafeArea(.bottom)
