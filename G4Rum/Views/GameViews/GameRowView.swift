@@ -20,24 +20,24 @@ struct GameRowView: View {
                 AsyncImage(url: URL(string: game.imageUrl)) { image in
                             image
                                 .resizable()
-                                .frame(width: 98, height: 98)
+                                .frame(width: width / 4, height: width / 4)
                                 //.clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
                         } placeholder: {
                             Color.gray
                         }
-                        .frame(width: 98, height: 98)
+                        .frame(width: width / 4, height: width / 4)
                         //.clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
                 Divider()
                     .overlay(.gray)
                 VStack {
                     Text(game.name)
-                        .font(.system(size: 16))
+                        .font(.system(size: width / 25))
                         .foregroundColor(.white)
-                        .bold().offset(x: -5).padding(.leading, 5)
+                        .bold()
                         .frame(maxWidth: .infinity, alignment:.leading)
                     
                     Text(game.developer)
-                        .font(.system(size: 15))
+                        .font(.system(size: width / 30))
                         .foregroundColor(.white)
                         .bold().offset(x: -4, y: 5).padding(.leading, 5).opacity(0.5)
                         .frame(maxWidth: .infinity, alignment:.leading)
@@ -45,7 +45,7 @@ struct GameRowView: View {
                 }
                 Spacer()
                 Text(game.ratings + "/5")
-                    .font(.system(size: 16))
+                    .font(.system(size: width / 30))
                     .foregroundColor(.white)
                     .bold().padding(.trailing, 10)
                 //.frame(maxWidth: .infinity, alignment:.leading)

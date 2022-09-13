@@ -17,6 +17,7 @@ struct ColorConstants{
     static let darkRed = Color(red: 0.50, green: 0.00, blue: 0.00)
     static let lightRed = Color(red: 0.79, green: 0.03, blue: 0.07)
     static let gray = Color(red: 0.75, green: 0.75, blue: 0.75)
+    static let darkGray = Color(red: 0.22, green: 0.22, blue: 0.22)
     static let lightBlue = Color(red: 0.77, green: 0.96, blue: 0.98)
     static let blue = Color(red: 0.39, green: 0.73, blue: 0.96)
     static let lightPurple = Color(red: 0.21, green: 0.21, blue: 0.52)

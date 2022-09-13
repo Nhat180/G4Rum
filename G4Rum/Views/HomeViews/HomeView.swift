@@ -12,6 +12,9 @@ struct HomeView: View {
     @StateObject private var gameViewModel = GameViewModel()
     @ObservedObject var authViewModel = AuthViewModel()
     @State private var search: String = ""
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    
     var body: some View {
         
         NavigationView  {
@@ -31,12 +34,14 @@ struct HomeView: View {
                         TitleView()
                             .padding()
 
-                        SearchBar(search: $search)
+                        //SearchBar(search: $search)
                         Spacer()
                         Text("Trending Game")
-                            .font(.custom("PlayfairDisplay-Bold", size: 24))
+                            //.font(.custom("PlayfairDisplay-Bold", size: width / 10))
+                            .font(.system(size: width / 15))
+                            .bold()
                             .padding(.horizontal)
-                            .foregroundColor(Color("Primary"))
+                            .foregroundColor(.white)
                         
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack (spacing:0) {
@@ -47,7 +52,7 @@ struct HomeView: View {
                                                 AsyncImage(url: URL(string: i.imageUrl)) { image in
                                                             image
                                                                 .resizable()
-                                                                .frame(width: 210, height: 200 * (210/210))
+                                                                .frame(width: width / 2, height: width / 2)
                                                                 .cornerRadius(20.0)
                                                         } placeholder: {
                                                             Color.gray
@@ -62,17 +67,17 @@ struct HomeView: View {
                                                 HStack (spacing: 5) {
                                                     Text("Rate: " + i.ratings + "/5")
                                                         .font(.system(size: 15))
-                                                        .foregroundColor(Color(.black))
+                                                        .foregroundColor(Color(.white))
                                                     Spacer()
                                                     Text( "Genre: " + i.genre)
                                                         .font(.system(size: 15))
-                                                        .foregroundColor(Color(.black))
+                                                        .foregroundColor(Color(.white))
                                                     
                                                 }
                                             }
                                             .frame(width: 210, height: 250 * (210/210))
                                             .padding()
-                                            .background(Color.white )
+                                            .background(.clear)
                                             .cornerRadius(20.0)
                                         })
                                     Spacer()
@@ -82,9 +87,11 @@ struct HomeView: View {
                         }
                         Spacer()
                         Text("Categories")
-                            .font(.custom("PlayfairDisplay-Bold", size: 24))
+                            //.font(.custom("PlayfairDisplay-Bold", size: 24))
+                            .font(.system(size: width / 15))
+                            .bold()
                             .padding(.horizontal)
-                            .foregroundColor(Color("Primary"))
+                            .foregroundColor(.white)
                     }
                 }
             }
@@ -137,39 +144,39 @@ struct TitleView: View {
     var body: some View {
         Text("Find the \nBest ")
             .font(.custom(FontManager.Playfair.regular, size: 28))
-            .foregroundColor(Color("Primary"))
+            .foregroundColor(.white)
             + Text("Game!")
             .font(.custom(FontManager.Playfair.bold, size: 28))
                 .fontWeight(.bold)
-                .foregroundColor(Color("Primary"))
+                .foregroundColor(.white)
     }
 }
 
-struct SearchBar: View {
-    @Binding var search: String
-    var body: some View {
-        HStack {
-            HStack {
-                Image("Search")
-                    .padding(.trailing, 8)
-                TextField("Search Game", text: $search)
-                    .foregroundColor(.black.opacity(0.8))
-            }
-            .padding(.all, 20)
-            .background(Color.white)
-            .cornerRadius(10.0)
-            .padding(.trailing, 8)
-            
-            Button(action: {}) {
-                Image("Scan")
-                    .padding()
-                    .background(Color("Primary"))
-                    .cornerRadius(10.0)
-            }
-        }
-        .padding(.horizontal)
-    }
-}
+//struct SearchBar: View {
+//    @Binding var search: String
+//    var body: some View {
+//        HStack {
+//            HStack {
+//                Image("Search")
+//                    .padding(.trailing, 8)
+//                TextField("Search Game", text: $search)
+//                    .foregroundColor(.black.opacity(0.8))
+//            }
+//            .padding(.all, 20)
+//            .background(Color.white)
+//            .cornerRadius(10.0)
+//            .padding(.trailing, 8)
+//
+//            Button(action: {}) {
+//                Image("Scan")
+//                    .padding()
+//                    .background(Color("Primary"))
+//                    .cornerRadius(10.0)
+//            }
+//        }
+//        .padding(.horizontal)
+//    }
+//}
 
 extension View{
     func getSafeArea()->UIEdgeInsets {

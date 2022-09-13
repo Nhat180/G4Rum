@@ -19,13 +19,13 @@ struct GameInfo: View {
                         image
                             .resizable()
                             .frame(width: width / 3, height: width / 3)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
                             .padding()
                     } placeholder: {
                         Color.gray
                     }
                     .frame(width: width / 3, height: width / 3)
-                    .clipShape(Rectangle())
+                    .clipShape(RoundedRectangle(cornerRadius: 25))
                     .padding(.leading, 5)
                     .padding(.top, 10)
             VStack {
@@ -54,11 +54,11 @@ struct GameInfo: View {
                     showPostListView.toggle()
                    }, label: {
                        Capsule()
-                           .fill(Color.blue)
+                           .fill(ColorConstants.darkGray)
                            .padding(10)
-                           .frame(width: 120, height: 60)
+                           .frame(width: width / 2)
                            .overlay(Text("FORUMS")
-                           .font(.system(size: 16))
+                           .font(.system(size: width / 25))
                            .fontWeight(.bold)
                            .foregroundColor(.white))
                    }).offset(x: -5).frame(maxWidth: .infinity, alignment:.leading)
@@ -70,40 +70,40 @@ struct GameInfo: View {
                 VStack {
                     Text("RATINGS")
                         .foregroundColor(.white)
-                        .font(.system(size: 18)).padding(.leading, 20)
+                        .font(.system(size: width / 30)).padding(.leading, 20)
                     Text(game.ratings + "/5")
                         .foregroundColor(.white)
-                        .font(.system(size: 28)).padding(.leading, 20)
+                        .font(.system(size: width / 20)).padding(.leading, 20).padding(.top, 1)
                 }
-                Divider().frame(height: 50)
+                Divider()
                     .overlay(.white).padding(.leading, 20)
                 VStack(alignment: .center) {
                     Text("AGE")
                         .foregroundColor(.white)
-                        .font(.system(size: 18)).padding(.leading, 20)
+                        .font(.system(size: width / 30)).padding(.leading, 20)
                     Text(game.minAge)
                         .foregroundColor(.white)
-                        .font(.system(size: 28)).padding(.leading, 20)
+                        .font(.system(size: width / 20)).padding(.leading, 20).padding(.top, 1)
                 }
-                Divider().frame(height: 50)
+                Divider()
                     .overlay(.white).padding(.leading, 20)
                 VStack(alignment: .center) {
                     Text("SIZE")
                         .foregroundColor(.white)
-                        .font(.system(size: 18)).padding(.leading, 20)
+                        .font(.system(size: width / 30)).padding(.leading, 20)
                     Text(game.size)
                         .foregroundColor(.white)
-                        .font(.system(size: 28)).padding(.leading, 20)
+                        .font(.system(size: width / 20)).padding(.leading, 20).padding(.top, 1)
                 }
-                Divider().frame(height: 50)
+                Divider()
                     .overlay(.white).padding(.leading, 20)
                 VStack(alignment: .center) {
                     Text("GENRE")
                         .foregroundColor(.white)
-                        .font(.system(size: 18)).padding(.leading, 20)
+                        .font(.system(size: width / 30)).padding(.leading, 20).padding(.trailing, 20)
                     Text(game.genre)
                         .foregroundColor(.white)
-                        .font(.system(size: 28)).padding(.leading, 20)
+                        .font(.system(size: width / 20)).padding(.leading, 20).padding(.trailing, 20).padding(.top, 1)
                 }
 
             }
