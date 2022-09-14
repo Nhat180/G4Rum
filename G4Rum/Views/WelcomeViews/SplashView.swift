@@ -18,6 +18,7 @@ struct SplashView: View {
     @State var isWelcomeActive: Bool = false
     @AppStorage("_showOnboarding") var showOnboarding: Bool = true
     let user = Auth.auth().currentUser
+    let width = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack{
@@ -42,7 +43,7 @@ struct SplashView: View {
                     endPoint: .bottomTrailing)
                     .edgesIgnoringSafeArea(.all)
                     LottieView(fileName: "splash")
-                        .frame(width: 180, height: 180, alignment: .center)
+                        .frame(width: width / 5 * 2, height: width / 5 * 2, alignment: .center)
                 }
             }
         }
