@@ -212,7 +212,7 @@ struct Login : View {
                 if (authViewModel.authLoading) {
                     ProgressView()
                         .padding(.vertical)
-                        .padding(.horizontal, 55)
+                        .padding(.horizontal, width / 6)
                         .background(ColorConstants.darkRed)
                         .clipShape(Capsule())
                         // shadow...
@@ -222,7 +222,7 @@ struct Login : View {
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                         .padding(.vertical)
-                        .padding(.horizontal, 55)
+                        .padding(.horizontal, width / 6)
                         .background(ColorConstants.darkRed)
                         .clipShape(Capsule())
                         // shadow...
@@ -314,7 +314,7 @@ struct SignUP : View {
                     Divider().background(Color.white.opacity(0.5))
                 }
                 .padding(.horizontal)
-                .padding(.top, 30)
+                .padding(.top, 25)
                 
                 VStack{
                     HStack(spacing: 15){
@@ -391,7 +391,7 @@ struct SignUP : View {
                 if (authViewModel.authLoading) {
                     ProgressView()
                         .padding(.vertical)
-                        .padding(.horizontal, 55)
+                        .padding(.horizontal, width / 6)
                         .background(ColorConstants.darkRed)
                         .clipShape(Capsule())
                         // shadow...
@@ -401,7 +401,7 @@ struct SignUP : View {
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                         .padding(.vertical)
-                        .padding(.horizontal, 55)
+                        .padding(.horizontal, width / 6)
                         .background(ColorConstants.darkRed)
                         .clipShape(Capsule())
                         // shadow...

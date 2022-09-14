@@ -10,6 +10,7 @@ import SwiftUI
 let coloredNavAppearance = UINavigationBarAppearance()
 
 struct GameListView: View {
+    @Environment(\.colorScheme) var colorScheme
     @StateObject private var gameViewModel = GameViewModel()
     @State var searchText = ""
     
@@ -26,13 +27,10 @@ struct GameListView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [
-                    .black,
-                    ColorConstants.darkRed
-                ]),
+                LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
                 startPoint: .topLeading,
-                endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
+                endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
+                
                 ScrollView (.vertical, showsIndicators: false) {
                     if (filteredGame.isEmpty) {
                         Text("No games found")
@@ -54,7 +52,7 @@ struct GameListView: View {
             
         }
         .disableAutocorrection(true)
-        .accentColor(.white)
+        .accentColor(colorScheme == .dark ? .white : .black)
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onAppear() {
             self.gameViewModel.getAllGames(genre: "Indie")

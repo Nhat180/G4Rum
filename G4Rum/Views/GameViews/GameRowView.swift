@@ -21,31 +21,27 @@ struct GameRowView: View {
                             image
                                 .resizable()
                                 .frame(width: width / 4, height: width / 4)
-                                //.clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
                         } placeholder: {
                             Color.gray
                         }
                         .frame(width: width / 4, height: width / 4)
-                        //.clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
                 Divider()
                     .overlay(.gray)
                 VStack {
                     Text(game.name)
                         .font(.system(size: width / 25))
-                        .foregroundColor(.white)
                         .bold()
                         .frame(maxWidth: .infinity, alignment:.leading)
                     
                     Text(game.developer)
                         .font(.system(size: width / 30))
-                        .foregroundColor(.white)
                         .bold().opacity(0.5)
                         .frame(maxWidth: .infinity, alignment:.leading)
-                        .foregroundColor(.white)
                 }
                 Text(game.ratings + "/5")
                     .font(.system(size: width / 30))
-                    .foregroundColor(.white)
                     .bold()
                     //.frame(maxWidth: .infinity, alignment:.trailing)
             }

@@ -28,29 +28,31 @@ struct HomeView: View {
                 
                 ScrollView (showsIndicators: false) {
                     VStack(alignment: .leading) {
-                        
-                        Menu {
-                            Button(action: {
-                                authViewModel.signOut()
-                            }, label: {
-                                Text("Log Out")
-                            })
-                        } label: {
-                            Label (
-                                title: {},
-                                icon: {
-                                    Image(systemName: "person.circle")
-                                        .resizable()
-                                        .frame(width: 40, height: 40, alignment: .center)
-                                        .foregroundColor(Color(.white))
-                                }
-                            )
-                        }
-                        
-                        
-                        
-                        TitleView()
+                        HStack {
+                            TitleView()
+                                .padding()
+                            
+                            Spacer()
+                            
+                            Menu {
+                                Button(action: {
+                                    authViewModel.signOut()
+                                }, label: {
+                                    Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
+                                })
+                            } label: {
+                                Label (
+                                    title: {},
+                                    icon: {
+                                        Image(systemName: "person.circle")
+                                            .resizable()
+                                            .frame(width: width / 10, height: width / 10, alignment: .center)
+                                            .foregroundColor(Color(.white))
+                                    }
+                                )
+                            }
                             .padding()
+                        }
                         
                         Divider()
                             .overlay(.white)
