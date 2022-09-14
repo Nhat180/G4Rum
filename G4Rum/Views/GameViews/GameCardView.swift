@@ -8,29 +8,27 @@
 import SwiftUI
 
 struct GameCardView: View {
+    @Environment(\.colorScheme) var colorScheme
     var game: Game
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     @State private var showAllRatingView = false
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [
-                .black,
-                ColorConstants.darkRed,
-            ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing)
+            LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing)
             .edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack {
                     GameInfo(game: game)
-                    Divider().overlay(.white).padding(.top, 15)
+                    Divider().overlay(colorScheme == .dark ? .white : .black).padding(.top, 15)
                     AboutGame(game: game)
-                    Divider().overlay(.white).padding(.top, 15)
+                    Divider().overlay(colorScheme == .dark ? .white : .black).padding(.top, 15)
                     HStack(alignment: .top) {
                         Text("Ratings & Reviews")
                             .font(.system(size: width / 15))
-                            .bold().foregroundColor(.white)
+                            .bold()
                             .offset(y: 10).padding(.leading, 5).padding(.bottom, 2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
