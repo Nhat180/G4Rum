@@ -45,34 +45,45 @@ struct ScreenView: View{
     let fileName: String
     let showsDismissButton: Bool
     @Binding var showOnboarding: Bool
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     
     var body: some View{
         VStack{
             
             Text(title)
-                .font(.system(size: 32))
+                .bold()
+                .font(.system(size: width / 10))
                 .foregroundColor(.white)
                 .padding()
             
             LottieView(fileName: fileName)
-                .frame(width: 200, height: 200, alignment: .center)
+                .frame(width: width / 2, height: width / 2, alignment: .center)
             
             Text(detail)
-                .font(.system(size: 24))
+                .font(.system(size: width / 20))
                 .multilineTextAlignment(.center)
-                .foregroundColor(ColorConstants.gray)
+                .foregroundColor(.white)
+                .opacity(0.5)
                 .padding()
             
             if showsDismissButton{
                 Button(action: {
                     showOnboarding.toggle()
                 }, label: {
+//                    Capsule()
+//                    .fill(Color.white.opacity(0.2))
+//                    .padding(2)
+//                    .frame(height: )
+//                    .overlay(Text("Get Started")
+//                        .font(.system(.title3, design: .rounded))
+//                        .fontWeight(.bold)
+//                        .foregroundColor(.white))
                     Capsule()
-                    .fill(Color.white.opacity(0.2))
-                    .padding(2)
-                    .frame(height:60)
-                    .overlay(Text("Get Started")
-                        .font(.system(.title3, design: .rounded))
+                        .fill(Color.white.opacity(0.2))
+                        .frame(width: width / 2, height: width / 10)
+                        .overlay(Text("Get Started")
+                        .font(.system(size: width / 20))
                         .fontWeight(.bold)
                         .foregroundColor(.white))
                 })

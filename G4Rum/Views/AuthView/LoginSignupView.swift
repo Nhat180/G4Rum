@@ -108,6 +108,8 @@ struct Login : View {
     @State private var validation = false
     @State var alertStr = ""
     @State private var loginAlert = "Sorry, the mail or password is not correct"
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     
     var body: some View{
         ZStack(alignment: .bottom) {
@@ -116,12 +118,12 @@ struct Login : View {
                         VStack(spacing: 10){
                             Text("Login")
                                 .foregroundColor(self.index == 0 ? .white : .gray)
-                                .font(.title)
+                                .font(.system(size: width / 15))
                                 .fontWeight(.bold)
                             
                             Capsule()
                                 .fill(self.index == 0 ? .white : Color.clear)
-                                .frame(width: 100, height: 5)
+                                .frame(width: width / 5, height: 5)
                         }
                         Spacer(minLength: 0)
                     }
@@ -131,6 +133,8 @@ struct Login : View {
                         
                         HStack(spacing: 15){
                             Image(systemName: "envelope.fill")
+                                .resizable()
+                                .frame(width: width / 20 , height: width / 30)
                                 .foregroundColor(ColorConstants.darkRed)
                             
                             TextField("Email Address", text: self.$email)
@@ -144,6 +148,8 @@ struct Login : View {
                     VStack{
                         HStack(spacing: 15){
                             Image(systemName: hiddenPassword ? "eye.slash.fill" : "eye.fill")
+                                .resizable()
+                                .frame(width: width / 20 , height: width / 30)
                                 .foregroundColor(ColorConstants.darkRed)
                                 .onTapGesture {
                                     hiddenPassword.toggle()
@@ -251,6 +257,9 @@ struct SignUP : View {
     @State var alertStr = ""
     @State private var signUpAlert = "Cannot create account with this mail! Try another, please."
     
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    
     var body: some View{
         ZStack(alignment: .bottom) {
             VStack{
@@ -260,12 +269,12 @@ struct SignUP : View {
                     VStack(spacing: 10){
                         Text("SignUp")
                             .foregroundColor(self.index == 1 ? .white : .gray)
-                            .font(.title)
+                            .font(.system(size: width / 15))
                             .fontWeight(.bold)
                         
                         Capsule()
                             .fill(self.index == 1 ? .white : Color.clear)
-                            .frame(width: 100, height: 5)
+                            .frame(width: width / 5, height: 5)
                     }
                 }
                 .padding(.top, 20)// for top curve...
@@ -273,7 +282,9 @@ struct SignUP : View {
                 VStack{
                     HStack(spacing: 15){
                         Image(systemName: "envelope.fill")
-                        .foregroundColor(ColorConstants.darkRed)
+                            .resizable()
+                            .frame(width: width / 20 , height: width / 30)
+                            .foregroundColor(ColorConstants.darkRed)
                         
                         TextField("Email Address", text: self.$email)
                     }
@@ -286,6 +297,8 @@ struct SignUP : View {
                 VStack{
                     HStack(spacing: 15){
                         Image(systemName: hiddenPassword ? "eye.slash.fill" : "eye.fill")
+                            .resizable()
+                            .frame(width: width / 20 , height: width / 30)
                             .foregroundColor(ColorConstants.darkRed)
                             .onTapGesture {
                                 hiddenPassword.toggle()
@@ -306,6 +319,8 @@ struct SignUP : View {
                 VStack{
                     HStack(spacing: 15){
                         Image(systemName: hiddenRePassword ? "eye.slash.fill" : "eye.fill")
+                            .resizable()
+                            .frame(width: width / 20 , height: width / 30)
                             .foregroundColor(ColorConstants.darkRed)
                             .onTapGesture {
                                 hiddenRePassword.toggle()

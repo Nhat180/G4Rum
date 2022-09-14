@@ -30,7 +30,9 @@ struct HomeView: View {
                     VStack(alignment: .leading) {
                         
                         Menu {
-                            Button(action: {}, label: {
+                            Button(action: {
+                                authViewModel.signOut()
+                            }, label: {
                                 Text("Log Out")
                             })
                         } label: {
