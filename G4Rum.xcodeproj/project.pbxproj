@@ -11,6 +11,12 @@
 		1C08622628CDEDEA007B7932 /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C08622428CDEDEA007B7932 /* PlayfairDisplay-Regular.ttf */; };
 		1C08622B28CDF627007B7932 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C08622A28CDF627007B7932 /* FontManager.swift */; };
 		842EC48828C9CF6E002854E2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EC48728C9CF6E002854E2 /* AuthViewModel.swift */; };
+		843F8EAD28D0A6D60068DE9E /* AllRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F8EAC28D0A6D60068DE9E /* AllRatingView.swift */; };
+		843F8EAF28D0A7150068DE9E /* RatingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F8EAE28D0A7150068DE9E /* RatingRowView.swift */; };
+		843F8EB128D0A73D0068DE9E /* AddRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F8EB028D0A73D0068DE9E /* AddRatingView.swift */; };
+		843F8EB328D0A7720068DE9E /* RatingStarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F8EB228D0A7720068DE9E /* RatingStarsView.swift */; };
+		843F8EB528D0A7840068DE9E /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F8EB428D0A7840068DE9E /* StarsView.swift */; };
+		843F8EB728D0A7DF0068DE9E /* PreviewRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F8EB628D0A7DF0068DE9E /* PreviewRatingView.swift */; };
 		9F203C9E28C763680028A07F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9D28C763680028A07F /* HomeView.swift */; };
 		9F203CA028C9B75B0028A07F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203C9F28C9B75B0028A07F /* SplashView.swift */; };
 		9F203CA228C9B7EB0028A07F /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F203CA128C9B7EB0028A07F /* LottieView.swift */; };
@@ -54,6 +60,12 @@
 		1C08622728CDF3CD007B7932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1C08622A28CDF627007B7932 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		842EC48728C9CF6E002854E2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		843F8EAC28D0A6D60068DE9E /* AllRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRatingView.swift; sourceTree = "<group>"; };
+		843F8EAE28D0A7150068DE9E /* RatingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingRowView.swift; sourceTree = "<group>"; };
+		843F8EB028D0A73D0068DE9E /* AddRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRatingView.swift; sourceTree = "<group>"; };
+		843F8EB228D0A7720068DE9E /* RatingStarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStarsView.swift; sourceTree = "<group>"; };
+		843F8EB428D0A7840068DE9E /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
+		843F8EB628D0A7DF0068DE9E /* PreviewRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRatingView.swift; sourceTree = "<group>"; };
 		9F203C9D28C763680028A07F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = G4Rum/Views/HomeViews/HomeView.swift; sourceTree = SOURCE_ROOT; };
 		9F203C9F28C9B75B0028A07F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		9F203CA128C9B7EB0028A07F /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LottieView.swift; path = G4Rum/Views/LottieView.swift; sourceTree = SOURCE_ROOT; };
@@ -110,6 +122,19 @@
 				1C08622428CDEDEA007B7932 /* PlayfairDisplay-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		843F8EAB28D0A6A40068DE9E /* RatingViews */ = {
+			isa = PBXGroup;
+			children = (
+				843F8EAC28D0A6D60068DE9E /* AllRatingView.swift */,
+				843F8EAE28D0A7150068DE9E /* RatingRowView.swift */,
+				843F8EB028D0A73D0068DE9E /* AddRatingView.swift */,
+				843F8EB228D0A7720068DE9E /* RatingStarsView.swift */,
+				843F8EB428D0A7840068DE9E /* StarsView.swift */,
+				843F8EB628D0A7DF0068DE9E /* PreviewRatingView.swift */,
+			);
+			path = RatingViews;
 			sourceTree = "<group>";
 		};
 		9F203CA528C9BDA40028A07F /* ColorConstants */ = {
@@ -176,6 +201,7 @@
 		A06C0C6B28CC7BBC00AF4871 /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				843F8EAB28D0A6A40068DE9E /* RatingViews */,
 				A06C0C6C28CC809600AF4871 /* GameInfo.swift */,
 				A040CA6B28CDFBD100F5D22F /* AboutGame.swift */,
 			);
@@ -365,6 +391,7 @@
 				A0FA0D3928C7A8E800AC09EA /* GameViewModel.swift in Sources */,
 				A08B51A828CBB3F5005E6142 /* GameCardView.swift in Sources */,
 				A040CA6C28CDFBD100F5D22F /* AboutGame.swift in Sources */,
+				843F8EAD28D0A6D60068DE9E /* AllRatingView.swift in Sources */,
 				A073E4F128C900F800166899 /* Category.swift in Sources */,
 				A0A8ED0A28C63DF200A6C13D /* ContentView.swift in Sources */,
 				A0EFECCE28C7091700801BFD /* Game.swift in Sources */,
@@ -376,16 +403,21 @@
 				A0DE29A628CEE1BF00AC7E3E /* PostDetailView.swift in Sources */,
 				9F203CA028C9B75B0028A07F /* SplashView.swift in Sources */,
 				1C08622B28CDF627007B7932 /* FontManager.swift in Sources */,
+				843F8EB528D0A7840068DE9E /* StarsView.swift in Sources */,
 				A0A8ED0828C63DF200A6C13D /* G4RumApp.swift in Sources */,
+				843F8EB328D0A7720068DE9E /* RatingStarsView.swift in Sources */,
 				A0E8C8FC28C738B700E0389D /* Comment.swift in Sources */,
+				843F8EB728D0A7DF0068DE9E /* PreviewRatingView.swift in Sources */,
 				A092255C28CFAD60007EE91C /* GameRatingViewModel.swift in Sources */,
 				9F203CA228C9B7EB0028A07F /* LottieView.swift in Sources */,
+				843F8EB128D0A73D0068DE9E /* AddRatingView.swift in Sources */,
 				A027100228CB927200B21397 /* GameListView.swift in Sources */,
 				A040CA6F28CE5E2B00F5D22F /* PostListView.swift in Sources */,
 				A027100028CB883A00B21397 /* GameRowView.swift in Sources */,
 				9F203CA728C9BDB80028A07F /* ColorConstants.swift in Sources */,
 				9F203C9E28C763680028A07F /* HomeView.swift in Sources */,
 				A0E8C8FE28C7497E00E0389D /* Post.swift in Sources */,
+				843F8EAF28D0A7150068DE9E /* RatingRowView.swift in Sources */,
 				A073E4F728C903A100166899 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

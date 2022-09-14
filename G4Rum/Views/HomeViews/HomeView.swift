@@ -29,6 +29,24 @@ struct HomeView: View {
                 ScrollView (showsIndicators: false) {
                     VStack(alignment: .leading) {
                         
+                        Menu {
+                            Button(action: {}, label: {
+                                Text("Log Out")
+                            })
+                        } label: {
+                            Label (
+                                title: {},
+                                icon: {
+                                    Image(systemName: "person.circle")
+                                        .resizable()
+                                        .frame(width: 40, height: 40, alignment: .center)
+                                        .foregroundColor(Color(.white))
+                                }
+                            )
+                        }
+                        
+                        
+                        
                         TitleView()
                             .padding()
                         
@@ -94,6 +112,10 @@ struct HomeView: View {
                             .bold()
                             .padding(.horizontal)
                             .foregroundColor(.white)
+                        
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            
+                        }
                     }
                 }
             }.onAppear(){
@@ -105,36 +127,7 @@ struct HomeView: View {
         .accentColor(Color(.white))
         .background(.clear)
         
-//        VStack {
-//            NavigationView {
-//                List(gameViewModel.randomGames) { game in
-//                    VStack(alignment: .leading) {
-//                        Text(game.id)
-//                            .font(.headline)
-//                        Text(game.name)
-//                            .font(.subheadline)
-//                    }
-//                }
-//                .navigationBarTitle("Game testing")
-//                .onAppear() {
-//                    self.gameViewModel.getRandomGames()
-//                }
-//            }
-//            Button(action: {
-//                print("Hello")
-//                authViewModel.signOut()
-//            }) {
-//                Text("LOG OUT")
-//                    .foregroundColor(.white)
-//                    .fontWeight(.bold)
-//                    .padding(.vertical)
-//                    .padding(.horizontal, 55)
-//                    .background(ColorConstants.darkRed)
-//                    .clipShape(Capsule())
-//                    // shadow...
-//                    .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
-//            }
-//        }
+        
     }
 }
 
@@ -160,31 +153,7 @@ struct TitleView: View {
     }
 }
 
-//struct SearchBar: View {
-//    @Binding var search: String
-//    var body: some View {
-//        HStack {
-//            HStack {
-//                Image("Search")
-//                    .padding(.trailing, 8)
-//                TextField("Search Game", text: $search)
-//                    .foregroundColor(.black.opacity(0.8))
-//            }
-//            .padding(.all, 20)
-//            .background(Color.white)
-//            .cornerRadius(10.0)
-//            .padding(.trailing, 8)
-//
-//            Button(action: {}) {
-//                Image("Scan")
-//                    .padding()
-//                    .background(Color("Primary"))
-//                    .cornerRadius(10.0)
-//            }
-//        }
-//        .padding(.horizontal)
-//    }
-//}
+
 
 extension View{
     func getSafeArea()->UIEdgeInsets {
