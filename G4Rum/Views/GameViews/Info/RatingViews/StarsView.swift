@@ -9,7 +9,15 @@ import SwiftUI
 
 struct StarsView: View {
     let rating: CGFloat
-    private let size: CGFloat = 20
+    var width: CGFloat
+    var size: CGFloat
+    
+    init (rating: CGFloat){
+        self.rating = rating
+        width = UIScreen.main.bounds.width
+        size = width / 20
+    }
+    
     var body: some View {
         let text = HStack(spacing: 0) {
             Image(systemName: "star.fill")

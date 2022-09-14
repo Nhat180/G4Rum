@@ -23,14 +23,14 @@ struct SplashView: View {
     var body: some View {
         ZStack{
             if self.isWelcomeActive {
-                if(!authViewModel.isLogin) {
+                if(!authViewModel.isLogin || showOnboarding) {
                     LoginSignupView(authViewModel: authViewModel)
                         .fullScreenCover(isPresented: $showOnboarding, content: {
                             OnboardingView(showOnboarding: $showOnboarding)
                         })
                 } else {
-                    HomeView(authViewModel: authViewModel)
-                    //GameListView() // đang test nên đừng xoá
+                    //HomeView(authViewModel: authViewModel)
+                    GameListView() // đang test nên đừng xoá
                 }
                 
             } else {
@@ -54,7 +54,9 @@ struct SplashView: View {
                 }
             }
             if (user != nil) {
-                authViewModel.updateLogin()
+                if (!showOnboarding) {
+                    authViewModel.updateLogin()
+                }
             }
         }
     }

@@ -20,6 +20,7 @@ struct GameCardView: View {
             ]),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack {
                     GameInfo(game: game)
@@ -31,7 +32,7 @@ struct GameCardView: View {
                             .font(.system(size: width / 15))
                             .bold().foregroundColor(.white)
                             .offset(y: 10).padding(.leading, 5).padding(.bottom, 2)
-                            .frame(maxWidth: .infinity, alignment:.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
                         NavigationLink("",destination: AllRatingView(game: game), isActive: $showAllRatingView)
                         Button(action: {
@@ -47,7 +48,6 @@ struct GameCardView: View {
                 .padding()
             }
         }
-        .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
