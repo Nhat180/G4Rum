@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameRowView: View {
+    @Environment(\.colorScheme) var colorScheme
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -28,7 +29,7 @@ struct GameRowView: View {
                         .frame(width: width / 4, height: width / 4)
                         .clipShape(RoundedRectangle(cornerRadius: 25))
                 Divider()
-                    .overlay(.gray)
+                    .overlay(colorScheme == .dark ? .white : .black)
                 VStack {
                     Text(game.name)
                         .font(.system(size: width / 25))
@@ -47,7 +48,7 @@ struct GameRowView: View {
             }
             Divider()
                 .frame(width: width / 10 * 9)
-                .overlay(.gray)
+                .overlay(colorScheme == .dark ? .white : .black)
 
         }
         .padding([.leading, .trailing], width / 20)

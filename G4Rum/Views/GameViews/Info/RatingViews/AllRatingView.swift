@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AllRatingView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var game: Game
     @StateObject private var gameRatingViewModel = GameRatingViewModel()
     @State private var showingAddScreen = false
@@ -17,10 +19,7 @@ struct AllRatingView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [
-                    .black,
-                    ColorConstants.darkRed,
-                ]),
+                LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)

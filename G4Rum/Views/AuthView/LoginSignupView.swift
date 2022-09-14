@@ -15,7 +15,7 @@ struct LoginSignupView: View {
         if !authViewModel.isLogin {
             AuthView(authViewModel: authViewModel)
                 // for light status bar...
-                .preferredColorScheme(.dark)
+                //.preferredColorScheme(.dark)
         } else {
             HomeView(authViewModel: authViewModel)
             //GameListView() // đang test nên đừng xoá
@@ -30,6 +30,7 @@ struct LoginSignupView_Previews: PreviewProvider {
 }
 
 struct AuthView : View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var authViewModel = AuthViewModel()
     @State var index = 0
     
@@ -37,10 +38,7 @@ struct AuthView : View {
         
         GeometryReader{_ in
             ZStack{
-                LinearGradient(gradient: Gradient(colors: [
-                    .black,
-                    ColorConstants.darkRed
-                ]),
+                LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
@@ -58,7 +56,7 @@ struct AuthView : View {
                 .padding(.vertical)
             }
         }
-        .background(Color("Color").edgesIgnoringSafeArea(.all))
+//        .background(Color("Color").edgesIgnoringSafeArea(.all))
     }
 }
 
@@ -98,6 +96,7 @@ struct CShape1 : Shape {
 }
 
 struct Login : View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var authViewModel = AuthViewModel()
     @State var email = ""
     @State var pass = ""
@@ -117,12 +116,12 @@ struct Login : View {
                     HStack{
                         VStack(spacing: 10){
                             Text("Login")
-                                .foregroundColor(self.index == 0 ? .white : .gray)
+                                .foregroundColor(colorScheme == .dark ? (self.index == 0 ? .white : .gray) : (self.index == 0 ? ColorConstants.darkRed : .gray))
                                 .font(.system(size: width / 15))
                                 .fontWeight(.bold)
                             
                             Capsule()
-                                .fill(self.index == 0 ? .white : Color.clear)
+                                .fill(colorScheme == .dark ? (self.index == 0 ? .white : Color.clear) : (self.index == 0 ? ColorConstants.darkRed : Color.clear))
                                 .frame(width: width / 5, height: 5)
                         }
                         Spacer(minLength: 0)
@@ -135,7 +134,7 @@ struct Login : View {
                             Image(systemName: "envelope.fill")
                                 .resizable()
                                 .frame(width: width / 20 , height: width / 30)
-                                .foregroundColor(ColorConstants.darkRed)
+                                .foregroundColor(colorScheme == .dark ? ColorConstants.darkRed : ColorConstants.darkRed)
                             
                             TextField("Email Address", text: self.$email)
                         }
@@ -150,7 +149,7 @@ struct Login : View {
                             Image(systemName: hiddenPassword ? "eye.slash.fill" : "eye.fill")
                                 .resizable()
                                 .frame(width: width / 20 , height: width / 30)
-                                .foregroundColor(ColorConstants.darkRed)
+                                .foregroundColor(colorScheme == .dark ? ColorConstants.darkRed : ColorConstants.darkRed)
                                 .onTapGesture {
                                     hiddenPassword.toggle()
                                 }
@@ -172,7 +171,7 @@ struct Login : View {
             .padding()
             // bottom padding...
             .padding(.bottom, 65)
-            .background(.black)
+            .background(colorScheme == .dark ? .black : .white)
             .clipShape(CShape())
             .contentShape(CShape())
             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: -5)
@@ -213,7 +212,7 @@ struct Login : View {
                     ProgressView()
                         .padding(.vertical)
                         .padding(.horizontal, width / 6)
-                        .background(ColorConstants.darkRed)
+                        .background(colorScheme == .dark ? ColorConstants.darkRed : ColorConstants.darkRed)
                         .clipShape(Capsule())
                         // shadow...
                         .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
@@ -223,7 +222,7 @@ struct Login : View {
                         .fontWeight(.bold)
                         .padding(.vertical)
                         .padding(.horizontal, width / 6)
-                        .background(ColorConstants.darkRed)
+                        .background(colorScheme == .dark ? ColorConstants.darkRed : ColorConstants.darkRed)
                         .clipShape(Capsule())
                         // shadow...
                         .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
@@ -244,6 +243,7 @@ struct Login : View {
 // SignUP Page..
 
 struct SignUP : View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var authViewModel = AuthViewModel()
     @State var email = ""
     @State var pass = ""
@@ -268,12 +268,12 @@ struct SignUP : View {
                     
                     VStack(spacing: 10){
                         Text("SignUp")
-                            .foregroundColor(self.index == 1 ? .white : .gray)
+                            .foregroundColor(colorScheme == .dark ? (self.index == 1 ? .white : .gray) : (self.index == 1 ? ColorConstants.darkRed : .gray))
                             .font(.system(size: width / 15))
                             .fontWeight(.bold)
                         
                         Capsule()
-                            .fill(self.index == 1 ? .white : Color.clear)
+                            .fill(colorScheme == .dark ? (self.index == 1 ? .white : Color.clear) : (self.index == 1 ? ColorConstants.darkRed : Color.clear))
                             .frame(width: width / 5, height: 5)
                     }
                 }
@@ -341,7 +341,7 @@ struct SignUP : View {
             .padding()
             // bottom padding...
             .padding(.bottom, 65)
-            .background(.black)
+            .background(colorScheme == .dark ? ColorConstants.darkGray : ColorConstants.gray)
             .clipShape(CShape1())
             // clipping the content shape also for tap gesture...
             .contentShape(CShape1())

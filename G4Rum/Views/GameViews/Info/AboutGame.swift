@@ -16,12 +16,11 @@ struct AboutGame: View {
     var body: some View {
         Text("About Game")
             .font(.system(size: width / 15))
-            .bold().foregroundColor(.white)
+            .bold()
             .offset(y: 10).padding(.leading, 5).padding(.bottom, 2)
             .frame(maxWidth: .infinity, alignment:.leading)
         Text(game.description)
             .font(.system(size: width / 25))
-            .foregroundColor(.white)
             .offset(y: 10)
             .padding(.leading, 5)
             .frame(maxWidth: .infinity, alignment:.leading)

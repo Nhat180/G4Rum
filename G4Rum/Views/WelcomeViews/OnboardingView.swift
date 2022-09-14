@@ -9,13 +9,13 @@ import Foundation
 import SwiftUI
 
 struct OnboardingView: View{
+    @Environment(\.colorScheme) var colorScheme
+    
     @Binding var showOnboarding: Bool
+    
     var body: some View{
         ZStack{
-            LinearGradient(gradient: Gradient(colors: [
-                .black,
-                ColorConstants.darkRed
-            ]),
+            LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
             startPoint: .topLeading,
             endPoint: .bottomTrailing)
             .edgesIgnoringSafeArea(.all)
@@ -34,9 +34,10 @@ struct OnboardingView: View{
             .onAppear {
                 UIPageControl.appearance().currentPageIndicatorTintColor = .black
                 UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
-                }
-              }
+            }
         }
+        .accentColor(colorScheme == .dark ? .white : .black)
+    }
 }
           
 struct ScreenView: View{
@@ -50,11 +51,9 @@ struct ScreenView: View{
     
     var body: some View{
         VStack{
-            
             Text(title)
                 .bold()
                 .font(.system(size: width / 10))
-                .foregroundColor(.white)
                 .padding()
             
             LottieView(fileName: fileName)
@@ -63,7 +62,6 @@ struct ScreenView: View{
             Text(detail)
                 .font(.system(size: width / 20))
                 .multilineTextAlignment(.center)
-                .foregroundColor(.white)
                 .opacity(0.5)
                 .padding()
             
@@ -71,21 +69,12 @@ struct ScreenView: View{
                 Button(action: {
                     showOnboarding.toggle()
                 }, label: {
-//                    Capsule()
-//                    .fill(Color.white.opacity(0.2))
-//                    .padding(2)
-//                    .frame(height: )
-//                    .overlay(Text("Get Started")
-//                        .font(.system(.title3, design: .rounded))
-//                        .fontWeight(.bold)
-//                        .foregroundColor(.white))
                     Capsule()
                         .fill(Color.white.opacity(0.2))
                         .frame(width: width / 2, height: width / 10)
                         .overlay(Text("Get Started")
                         .font(.system(size: width / 20))
-                        .fontWeight(.bold)
-                        .foregroundColor(.white))
+                        .fontWeight(.bold))
                 })
                 
             }

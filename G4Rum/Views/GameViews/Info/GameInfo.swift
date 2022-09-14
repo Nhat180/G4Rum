@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameInfo: View {
+    @Environment(\.colorScheme) var colorScheme
     var game: Game
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -31,20 +32,20 @@ struct GameInfo: View {
                 Spacer()
                 Text(game.name)
                     .font(.system(size: width / 20))
-                    .bold().foregroundColor(.white)
+                    .bold()
                     .frame(maxWidth: .infinity, alignment:.leading)
                     .padding(.trailing, 10)
                 Spacer()
                 Text(game.developer)
                     .font(.system(size: width / 30))
-                    .bold().foregroundColor(.white)
+                    .bold()
                     .opacity(0.5)
                     .padding(.trailing, 10)
                     .frame(maxWidth: .infinity, alignment:.leading)
         
                 Text("Released: " + game.releaseDate)
                     .font(.system(size: width / 30))
-                    .bold().foregroundColor(.white)
+                    .bold()
                     .opacity(0.5)
                     .padding(.trailing, 10)
                     .frame(maxWidth: .infinity, alignment:.leading)
@@ -54,54 +55,45 @@ struct GameInfo: View {
                     showPostListView.toggle()
                    }, label: {
                        Capsule()
-                           .fill(ColorConstants.darkGray)
+                           .fill(colorScheme == .dark ? ColorConstants.darkGray : ColorConstants.gray)
                            .frame(width: width / 2, height: height / 20)
                            .overlay(Text("FORUMS")
                            .font(.system(size: width / 25))
-                           .fontWeight(.bold)
-                           .foregroundColor(.white))
+                           .fontWeight(.bold))
                    }).frame(maxWidth: .infinity, alignment:.leading)
             }
         }
-        Divider().overlay(.white).padding(.top, 10).padding(.bottom, 15)
+        Divider().overlay(colorScheme == .dark ? .white : .black).padding(.top, 10).padding(.bottom, 15)
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 VStack {
                     Text("RATINGS")
-                        .foregroundColor(.white)
                         .font(.system(size: width / 30)).padding(.leading, 20)
                     Text(game.ratings + "/5")
-                        .foregroundColor(.white)
                         .font(.system(size: width / 20)).padding(.leading, 20).padding(.top, 1)
                 }
                 Divider()
-                    .overlay(.white).padding(.leading, 20)
+                    .overlay(colorScheme == .dark ? .white : .black).padding(.leading, 20)
                 VStack(alignment: .center) {
                     Text("AGE")
-                        .foregroundColor(.white)
                         .font(.system(size: width / 30)).padding(.leading, 20)
                     Text(game.minAge)
-                        .foregroundColor(.white)
                         .font(.system(size: width / 20)).padding(.leading, 20).padding(.top, 1)
                 }
                 Divider()
-                    .overlay(.white).padding(.leading, 20)
+                    .overlay(colorScheme == .dark ? .white : .black).padding(.leading, 20)
                 VStack(alignment: .center) {
                     Text("SIZE")
-                        .foregroundColor(.white)
                         .font(.system(size: width / 30)).padding(.leading, 20)
                     Text(game.size)
-                        .foregroundColor(.white)
                         .font(.system(size: width / 20)).padding(.leading, 20).padding(.top, 1)
                 }
                 Divider()
-                    .overlay(.white).padding(.leading, 20)
+                    .overlay(colorScheme == .dark ? .white : .black).padding(.leading, 20)
                 VStack(alignment: .center) {
                     Text("GENRE")
-                        .foregroundColor(.white)
                         .font(.system(size: width / 30)).padding(.leading, 20).padding(.trailing, 20)
                     Text(game.genre)
-                        .foregroundColor(.white)
                         .font(.system(size: width / 20)).padding(.leading, 20).padding(.trailing, 20).padding(.top, 1)
                 }
 

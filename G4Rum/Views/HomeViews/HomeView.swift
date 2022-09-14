@@ -9,6 +9,8 @@ import SwiftUI
 import CoreLocation
 
 struct HomeView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @StateObject private var gameViewModel = GameViewModel()
     @ObservedObject var authViewModel = AuthViewModel()
     @State private var search: String = ""
@@ -18,10 +20,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [
-                    .black,
-                    ColorConstants.darkRed
-                ]),
+                LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
@@ -47,7 +46,6 @@ struct HomeView: View {
                                         Image(systemName: "person.circle")
                                             .resizable()
                                             .frame(width: width / 10, height: width / 10, alignment: .center)
-                                            .foregroundColor(Color(.white))
                                     }
                                 )
                             }
@@ -55,15 +53,13 @@ struct HomeView: View {
                         }
                         
                         Divider()
-                            .overlay(.white)
+                            .overlay(colorScheme == .dark ? .white : .black)
                             .padding()
 
                         Text("Trending Game")
-                            //.font(.custom("PlayfairDisplay-Bold", size: width / 10))
                             .font(.system(size: width / 15))
                             .bold()
                             .padding(.horizontal)
-                            .foregroundColor(.white)
                         
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack (spacing:0) {
@@ -84,17 +80,13 @@ struct HomeView: View {
                                                 Text(i.name)
                                                     .font(.system(size: width / 25))
                                                     .bold()
-                                                    .foregroundColor(Color("Primary"))
                                                 Spacer()
                                                 HStack (spacing: 5) {
                                                     Text("Rate: " + i.ratings + "/5")
                                                         .font(.system(size: width / 30))
-                                                        .foregroundColor(Color(.white))
                                                     Spacer()
                                                     Text( "Genre: " + i.genre)
                                                         .font(.system(size: width / 30))
-                                                        .foregroundColor(Color(.white))
-                                                    
                                                 }
                                             }
                                             .frame(width: width / 2, height: width / 5 * 3)
@@ -108,14 +100,12 @@ struct HomeView: View {
                             }
                         }
                         Divider()
-                            .overlay(.white)
+                            .overlay(colorScheme == .dark ? .white : .black)
                             .padding()
                         Text("Categories")
-                            //.font(.custom("PlayfairDisplay-Bold", size: 24))
                             .font(.system(size: width / 15))
                             .bold()
                             .padding(.horizontal)
-                            .foregroundColor(.white)
                         
                         ScrollView (.horizontal, showsIndicators: false) {
                             
@@ -128,7 +118,7 @@ struct HomeView: View {
             .navigationBarTitle("")
             .navigationBarHidden(true)
         }
-        .accentColor(Color(.white))
+        .accentColor(colorScheme == .dark ? .white : .black)
         .background(.clear)
         
         
@@ -146,14 +136,10 @@ struct TitleView: View {
     let height = UIScreen.main.bounds.height
     var body: some View {
         Text("Find the \nBest ")
-            //.font(.custom(FontManager.Playfair.regular, size: width / 12))
             .font(.system(size: width / 12))
-            .foregroundColor(.white)
             + Text("Game!")
-            //.font(.custom(FontManager.Playfair.bold, size: width / 10))
             .font(.system(size: width / 10))
                 .fontWeight(.bold)
-                .foregroundColor(.white)
     }
 }
 

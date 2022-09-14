@@ -14,6 +14,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct SplashView: View {
+    @Environment(\.colorScheme) var colorScheme
     @StateObject private var authViewModel = AuthViewModel()
     @State var isWelcomeActive: Bool = false
     @AppStorage("_showOnboarding") var showOnboarding: Bool = true
@@ -35,10 +36,7 @@ struct SplashView: View {
                 
             } else {
                 ZStack{
-                    LinearGradient(gradient: Gradient(colors: [
-                        .black,
-                        ColorConstants.darkRed
-                    ]),
+                    LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing)
                     .edgesIgnoringSafeArea(.all)
