@@ -64,16 +64,9 @@ struct AllRatingView: View {
                     }
                 }
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-        }.onAppear() {
-            self.gameRatingViewModel.getAllRatings(gameID: game.id)
+            .onAppear() {
+                self.gameRatingViewModel.getAllRatings(gameID: game.id)
+            }
         }
     }
 }
-
-//struct AllRatingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AllRatingView(gameID: "013Uyag0wVOlgqNwiFUo")
-//    }
-//}
