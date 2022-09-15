@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameCardView: View {
     @Environment(\.colorScheme) var colorScheme
+    
     var game: Game
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -37,7 +38,7 @@ struct GameCardView: View {
                             showAllRatingView.toggle()
                         }) {
                             Text("See All")
-                                .font(.system(size: width / 25)).bold().foregroundColor(Color.blue)
+                                .font(.system(size: width / 25)).bold().foregroundColor(colorScheme == .dark ? Color.blue : ColorConstants.darkBlue)
                                 .offset(y: 18)
                         }
                     }.padding(.bottom, 10)

@@ -25,20 +25,22 @@ struct PostListView: View {
                 .edgesIgnoringSafeArea(.all)
                 ZStack {
                     ScrollView {
-                        Text("All Posts")
-                            .font(.system(size: width / 15))
-                            .bold()
-                            .frame(maxWidth: .infinity, alignment:.leading)
-                            .padding(.bottom, 2)
-                        ForEach(posts) { post in
-                            NavigationLink {
-                                PostDetailView(post: post)
-                            } label: {
-                                PostCardRowView(post: post)
+                        VStack {
+                            Text("All Posts")
+                                .font(.system(size: width / 15))
+                                .bold()
+                                .frame(maxWidth: .infinity, alignment:.leading)
+                                .padding(.bottom, 2)
+                            ForEach(posts) { post in
+                                NavigationLink {
+                                    PostDetailView(post: post)
+                                } label: {
+                                    PostCardRowView(post: post)
+                                }
                             }
                         }
+                        .padding()
                     }
-                    .padding()
                     Button {
                         addPost.toggle()
                     } label: {
@@ -52,6 +54,7 @@ struct PostListView: View {
                     .offset(x: width * 3 / 8, y: height * 3 / 8)
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

@@ -17,14 +17,14 @@ struct AllRatingView: View {
     let height = UIScreen.main.bounds.height
     
     var body: some View {
-        NavigationView {
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.all)
             ZStack {
-                LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
-                ZStack {
-                    ScrollView {
+                ScrollView {
+                    VStack {
                         Text("All Ratings & Reviews")
                             .font(.system(size: width / 15))
                             .bold()
@@ -34,39 +34,28 @@ struct AllRatingView: View {
                             RatingRowView(rating: rating)
                         }
                         .listRowSeparator(.hidden)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button {
-                                    showingAddScreen.toggle()
-                                } label: {
-                                    Label("Add Review", systemImage: "plus").foregroundColor(Color.blue)
-                                }
-                            }
-                        }
-                        .sheet(isPresented: $showingAddScreen) {
-                            AddRatingView(game: game)
-                        }
                     }
                     .padding()
-                    Button {
-                        showingAddScreen.toggle()
-                    } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .frame(width: width / 8, height: width / 8)
-                            .frame(alignment: .bottomTrailing)
-                            .foregroundColor(.black)
-                            .padding()
-                    }
-                    .offset(x: width * 3 / 8, y: height * 3 / 8)
-                    .sheet(isPresented: $showingAddScreen) {
-                        AddRatingView(game: game)
-                    }
+                }
+                Button {
+                    showingAddScreen.toggle()
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: width / 8, height: width / 8)
+                        .frame(alignment: .bottomTrailing)
+                        .foregroundColor(.black)
+                        .padding()
+                }
+                .offset(x: width * 3 / 8, y: height * 3 / 8)
+                .sheet(isPresented: $showingAddScreen) {
+                    AddRatingView(game: game)
                 }
             }
-            .onAppear() {
-                self.gameRatingViewModel.getAllRatings(gameID: game.id)
-            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear() {
+            self.gameRatingViewModel.getAllRatings(gameID: game.id)
         }
     }
 }
