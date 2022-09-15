@@ -152,7 +152,7 @@ struct Login : View {
                                 .foregroundColor(colorScheme == .dark ? ColorConstants.darkRed : ColorConstants.darkRed)
                                 .onTapGesture {
                                     hiddenPassword.toggle()
-                                }
+                            }
                             
                             if hiddenPassword {
                                 SecureField("Password", text: self.$pass)

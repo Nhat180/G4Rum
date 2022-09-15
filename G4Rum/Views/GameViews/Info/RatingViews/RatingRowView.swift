@@ -21,19 +21,15 @@ struct RatingRowView: View {
                 Text(rating.createdDate)
                     .font(.system(size: width / 25))
                     .frame(alignment: .topTrailing)
+                    .opacity(0.5)
             }
             StarsView(rating: CGFloat(rating.rating))
             Text(rating.text)
                 .font(.system(size: width / 25))
+                .opacity(0.5)
         }
         .padding()
         .background(Color.gray.opacity(0.1))
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
-
-//struct RatingRowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RatingRowView()
-//    }
-//}

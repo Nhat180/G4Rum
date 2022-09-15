@@ -69,34 +69,41 @@ struct GameInfo: View {
                 VStack {
                     Text("RATINGS")
                         .font(.system(size: width / 30)).padding(.leading, 20)
+                        .opacity(0.5)
                     Text(game.ratings + "/5")
                         .font(.system(size: width / 20)).padding(.leading, 20).padding(.top, 1)
+                        .opacity(0.5)
                 }
                 Divider()
                     .overlay(colorScheme == .dark ? .white : .black).padding(.leading, 20)
                 VStack(alignment: .center) {
                     Text("AGE")
                         .font(.system(size: width / 30)).padding(.leading, 20)
+                        .opacity(0.5)
                     Text(game.minAge)
                         .font(.system(size: width / 20)).padding(.leading, 20).padding(.top, 1)
+                        .opacity(0.5)
                 }
                 Divider()
                     .overlay(colorScheme == .dark ? .white : .black).padding(.leading, 20)
                 VStack(alignment: .center) {
                     Text("SIZE")
                         .font(.system(size: width / 30)).padding(.leading, 20)
+                        .opacity(0.5)
                     Text(game.size)
                         .font(.system(size: width / 20)).padding(.leading, 20).padding(.top, 1)
+                        .opacity(0.5)
                 }
                 Divider()
                     .overlay(colorScheme == .dark ? .white : .black).padding(.leading, 20)
                 VStack(alignment: .center) {
                     Text("GENRE")
                         .font(.system(size: width / 30)).padding(.leading, 20).padding(.trailing, 20)
+                        .opacity(0.5)
                     Text(game.genre)
                         .font(.system(size: width / 20)).padding(.leading, 20).padding(.trailing, 20).padding(.top, 1)
+                        .opacity(0.5)
                 }
-
             }
         }
     }

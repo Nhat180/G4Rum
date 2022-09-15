@@ -26,6 +26,7 @@ struct CommentRowView: View {
             }
             Text(comment.text)
                 .font(.system(size: width / 30))
+                .opacity(0.5)
             Spacer()
         }
         .padding()
