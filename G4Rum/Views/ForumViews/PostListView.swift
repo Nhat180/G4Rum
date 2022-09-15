@@ -1,23 +1,23 @@
 //
-//  AllRatingView.swift
+//  ForumViews.swift
 //  G4Rum
 //
-//  Created by Nhat, Nguyen Minh on 13/09/2022.
+//  Created by Ngô Xuân Huy on 15/09/2022.
 //
 
 import SwiftUI
 
-struct AllRatingView: View {
+struct PostListView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    var game: Game
-    @StateObject private var gameRatingViewModel = GameRatingViewModel()
-    @State private var showingAddScreen = false
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     
+    @State var addPost:Bool = false
     var body: some View {
-        NavigationView {
+        if addPost {
+            AddPostViews()
+        } else {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
                 startPoint: .topLeading,
@@ -25,31 +25,22 @@ struct AllRatingView: View {
                 .edgesIgnoringSafeArea(.all)
                 ZStack {
                     ScrollView {
-                        Text("All Ratings & Reviews")
+                        Text("All Posts")
                             .font(.system(size: width / 15))
                             .bold()
                             .frame(maxWidth: .infinity, alignment:.leading)
                             .padding(.bottom, 2)
-                        ForEach(gameRatingViewModel.reviews) { rating in
-                            RatingRowView(rating: rating)
-                        }
-                        .listRowSeparator(.hidden)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button {
-                                    showingAddScreen.toggle()
-                                } label: {
-                                    Label("Add Review", systemImage: "plus").foregroundColor(Color.blue)
-                                }
+                        ForEach(posts) { post in
+                            NavigationLink {
+                                PostDetailView(post: post)
+                            } label: {
+                                PostCardRowView(post: post)
                             }
-                        }
-                        .sheet(isPresented: $showingAddScreen) {
-                            AddRatingView(game: game)
                         }
                     }
                     .padding()
                     Button {
-                        showingAddScreen.toggle()
+                        addPost.toggle()
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
@@ -59,14 +50,14 @@ struct AllRatingView: View {
                             .padding()
                     }
                     .offset(x: width * 3 / 8, y: height * 3 / 8)
-                    .sheet(isPresented: $showingAddScreen) {
-                        AddRatingView(game: game)
-                    }
                 }
             }
-            .onAppear() {
-                self.gameRatingViewModel.getAllRatings(gameID: game.id)
-            }
         }
+    }
+}
+
+struct PostListView_Previews: PreviewProvider {
+    static var previews: some View {
+        PostListView()
     }
 }

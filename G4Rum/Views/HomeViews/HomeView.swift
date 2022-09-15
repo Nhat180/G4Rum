@@ -120,8 +120,6 @@ struct HomeView: View {
         }
         .accentColor(colorScheme == .dark ? .white : .black)
         .background(.clear)
-        
-        
     }
 }
 
