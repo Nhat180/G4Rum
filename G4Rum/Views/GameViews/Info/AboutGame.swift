@@ -23,6 +23,7 @@ struct AboutGame: View {
             .frame(maxWidth: .infinity, alignment:.leading)
         Text(game.description)
             .font(.system(size: width / 25))
+            .opacity(0.5)
             .offset(y: 10)
             .padding(.leading, 5)
             .frame(maxWidth: .infinity, alignment:.leading)

@@ -40,8 +40,10 @@ struct PostDetailView: View {
                                 VStack(alignment: .leading) {
                                     Text(post.username)
                                         .font(.system(size: width / 25))
+                                        .opacity(0.5)
                                     Text(post.createdDate)
                                         .font(.system(size: width / 30))
+                                        .opacity(0.5)
                                 }
                                 Spacer()
                             }
@@ -52,29 +54,30 @@ struct PostDetailView: View {
                             
                             Text("Discussion")
                                 .font(.system(size: width / 20))
+                                .frame(maxWidth: .infinity, alignment:.leading)
                             ForEach(comments) { comment in
                                 CommentRowView(comment: comment)
                             }
                         }
-                        .padding()
                     }
-//                    HStack(alignment: .bottom) {
-//                        VStack(alignment: .leading) {
-//                            Text("Comment")
-//                                .font(.system(size: width / 20))
-//                            TextEditor(
-//                                text: $comment)
-//                            .frame(height: min(40,textEditorHeight))
-//                            .textFieldStyle(.roundedBorder)
-//                            .colorMultiply(.gray)
-//                            .disableAutocorrection(true)
-//                        }
-//                        Button {
-//                        } label: {
-//                            Label("Send", systemImage: "plus")
-//                        }
-//                    }
+                    HStack(alignment: .bottom) {
+                        VStack(alignment: .leading) {
+                            Text("Comment")
+                                .font(.system(size: width / 20))
+                            TextEditor(text: $comment)
+                                .frame(height: width / 10)
+                                .opacity(0.2)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .disableAutocorrection(true)
+                        }
+                        Button {
+                        } label: {
+                            Text("Send")
+                                .font(.system(size: width / 25))
+                        }
+                    }
                 }
+                .padding()
             }
         }
     }
