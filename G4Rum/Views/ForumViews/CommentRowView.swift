@@ -9,23 +9,27 @@ import SwiftUI
 
 struct CommentRowView: View {
     var comment: Comment
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    
     var body: some View {
-        HStack(alignment: .top) {
-            Image("chat")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 50, height: 50)
-                .clipShape(Rectangle())
-            
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading) {
+            HStack {
+                Image("chat")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: width / 10, height: width / 10)
+                    .clipShape(Rectangle())
                 Text(comment.username)
-                    .font(.headline)
-                Text(comment.username)
-                    .font(.subheadline)
+                    .font(.system(size: width / 25))
+                Spacer()
             }
+            Text(comment.text)
+                .font(.system(size: width / 30))
             Spacer()
         }
         .padding()
-        .background(Color.gray)
+        .background(Color.gray.opacity(0.1))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

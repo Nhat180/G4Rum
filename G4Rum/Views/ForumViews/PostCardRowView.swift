@@ -9,50 +9,38 @@ import SwiftUI
 
 struct PostCardRowView: View {
     var post: Post
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    
     var body: some View {
-        VStack {
- 
+        VStack(alignment: .leading) {
             HStack {
+                Image("headphone")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: width / 10, height: width / 10)
+                    .clipShape(Rectangle())
+                
                 VStack(alignment: .leading) {
-                    
-                    HStack {
-                        Image("headphone")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50, height: 50)
-                            .clipShape(Rectangle())
-                        
-                        VStack(alignment: .leading) {
-                            Text(post.createdDate)
-                                .font(.headline)
-                            Text(post.createdDate)
-                                .font(.subheadline)
-                        }
-                        Spacer()
-                    }
-                    
-                    Text(post.title)
-                        .font(.title3)
-                        .fontWeight(.black)
-                        .foregroundColor(.primary)
-                        .lineLimit(2)
-                    Text(post.content)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .lineLimit(4)
-                        .font(.body)
-                        .foregroundColor(.secondary)
+                    Text(post.username)
+                        .font(.system(size: width / 25))
+                    Text(post.createdDate)
+                        .font(.system(size: width / 30))
                 }
-                .layoutPriority(100)
- 
                 Spacer()
             }
-            .padding()
+            Text(post.title)
+                .bold()
+                .lineLimit(2)
+                .font(.system(size: width / 20))
+            Spacer()
+                
+            Text(post.content)
+                .lineLimit(4)
+                .font(.system(size: width / 25))
         }
-        .cornerRadius(10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.5), lineWidth: 2)
-        )
-        .padding(.top, 5)
+        .padding()
+        .background(Color.gray.opacity(0.1))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AboutGame: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var game: Game
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -29,7 +31,7 @@ struct AboutGame: View {
             isExpanded = !isExpanded
         }) {
             Text(isExpanded ? "Less" : "More")
-                .font(.system(size: width / 25)).bold().foregroundColor(Color.blue)
+                .font(.system(size: width / 25)).bold().foregroundColor(colorScheme == .dark ? Color.blue : ColorConstants.darkBlue)
                 .offset(y: 15).padding(.leading, 5)
                 .frame(maxWidth: .infinity, alignment:.leading)
         }
