@@ -41,7 +41,7 @@ struct PostCardRowView: View {
                 .opacity(0.5)
         }
         .padding()
-        .background(Color.gray.opacity(0.1))
+        .background(Color.gray.opacity(0.2))
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct AddPostViews: View {
+    @StateObject private var postViewModel = PostViewModel()
     @Environment(\.colorScheme) var colorScheme
     
     @State var postView:Bool = false
@@ -15,12 +17,14 @@ struct AddPostViews: View {
     @State var content = ""
     @Environment(\.dismiss) var dismiss
     @State var textEditorHeight : CGFloat = 20
+    var gameID: String
+    let user = Auth.auth().currentUser
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     
     var body: some View {
         if postView {
-            PostListView()
+            PostListView(gameID: gameID)
         } else {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
@@ -37,6 +41,7 @@ struct AddPostViews: View {
                         Spacer()
                         Button {
                             postView.toggle()
+                            postViewModel.addPost(gameID: gameID, title: title, content: content, username: (user?.email)!)
                         } label: {
                             Text("Save")
                         }
@@ -62,7 +67,8 @@ struct AddPostViews: View {
                         .padding(.top, 15)
                     TextEditor(text: $title)
                         .frame(height: height / 20)
-                        .opacity(0.2)
+                        .opacity(0.5)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .disableAutocorrection(true)
                     
@@ -75,7 +81,8 @@ struct AddPostViews: View {
                         .padding(.top, 15)
                     TextEditor(text: $content)
                         .frame(height: height / 10)
-                        .opacity(0.2)
+                        .opacity(0.5)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .disableAutocorrection(true)
                     Spacer()
