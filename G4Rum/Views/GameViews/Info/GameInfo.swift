@@ -50,12 +50,12 @@ struct GameInfo: View {
                     .padding(.trailing, 10)
                     .frame(maxWidth: .infinity, alignment:.leading)
                 
-                NavigationLink("",destination: PostListView(), isActive: $showPostListView)
+                NavigationLink("",destination: PostListView(gameID: game.id), isActive: $showPostListView)
                 Button(action: {
                     showPostListView.toggle()
                    }, label: {
                        Capsule()
-                           .fill(colorScheme == .dark ? ColorConstants.darkGray : ColorConstants.gray)
+                           .fill(.gray.opacity(0.4))
                            .frame(width: width / 2, height: height / 20)
                            .overlay(Text("FORUMS")
                            .font(.system(size: width / 25))

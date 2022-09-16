@@ -30,7 +30,7 @@ struct CommentRowView: View {
             Spacer()
         }
         .padding()
-        .background(Color.gray.opacity(0.1))
+        .background(Color.gray.opacity(0.2))
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

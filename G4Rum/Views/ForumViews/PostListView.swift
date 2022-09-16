@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct PostListView: View {
-    @Environment(\.colorScheme) var colorScheme
+    @StateObject private var postViewModel = PostViewModel()
     
+    @Environment(\.colorScheme) var colorScheme
+    var gameID: String
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     
     @State var addPost:Bool = false
     var body: some View {
         if addPost {
-            AddPostViews()
+            AddPostViews(gameID: gameID)
         } else {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
@@ -31,9 +33,9 @@ struct PostListView: View {
                                 .bold()
                                 .frame(maxWidth: .infinity, alignment:.leading)
                                 .padding(.bottom, 2)
-                            ForEach(posts) { post in
+                            ForEach(postViewModel.posts) { post in
                                 NavigationLink {
-                                    PostDetailView(post: post)
+                                    PostDetailView(gameID: gameID, post: post)
                                 } label: {
                                     PostCardRowView(post: post)
                                 }
@@ -55,12 +57,15 @@ struct PostListView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear() {
+                self.postViewModel.getAllPosts(gameID: gameID)
+            }
         }
     }
 }
 
 struct PostListView_Previews: PreviewProvider {
     static var previews: some View {
-        PostListView()
+        PostListView(gameID: "fhweufwfeiuwf342342")
     }
 }

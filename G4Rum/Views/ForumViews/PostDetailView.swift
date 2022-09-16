@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct PostDetailView: View {
+    @StateObject private var postComment = PostCommentViewModel()
+    
     @Environment(\.colorScheme) var colorScheme
-
+    var gameID: String
     var post: Post
     @State var textEditorHeight : CGFloat = 100
+    let user = Auth.auth().currentUser
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     
@@ -49,13 +53,15 @@ struct PostDetailView: View {
                             }
                             
                             Text(post.content)
+                                .font(.system(size: width / 25))
+                                .frame(maxWidth: .infinity, alignment:.leading)
                             Divider()
                                 .overlay(colorScheme == .dark ? .white : .black)
                             
                             Text("Discussion")
                                 .font(.system(size: width / 20))
                                 .frame(maxWidth: .infinity, alignment:.leading)
-                            ForEach(comments) { comment in
+                            ForEach(postComment.comments) { comment in
                                 CommentRowView(comment: comment)
                             }
                         }
@@ -66,18 +72,25 @@ struct PostDetailView: View {
                                 .font(.system(size: width / 20))
                             TextEditor(text: $comment)
                                 .frame(height: width / 10)
-                                .opacity(0.2)
+                                .opacity(0.5)
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .disableAutocorrection(true)
                         }
                         Button {
+                            postComment.addComment(gameID: gameID, post: post, username: (user?.email)!, text: comment)
+                            comment = ""
                         } label: {
                             Text("Send")
                                 .font(.system(size: width / 25))
+                                .frame(alignment: .center)
                         }
                     }
                 }
                 .padding()
+                .navigationBarTitleDisplayMode(.inline)
+            }.onAppear() {
+                self.postComment.getAllComment(gameID: gameID, postID: post.id)
             }
         }
     }
