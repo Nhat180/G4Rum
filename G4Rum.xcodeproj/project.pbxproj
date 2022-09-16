@@ -266,13 +266,13 @@
 			isa = PBXGroup;
 			children = (
 				1C08622728CDF3CD007B7932 /* Info.plist */,
+				A0A8ED1528C6438D00A6C13D /* GoogleService-Info.plist */,
 				1C08622228CDEDEA007B7932 /* Fonts */,
 				9F203CA528C9BDA40028A07F /* ColorConstants */,
 				A073E4F528C9038000166899 /* Lottie */,
 				A080D2D328C86866002B70D6 /* Views */,
 				A0A8ED1F28C647F000A6C13D /* ViewModels */,
 				A0A8ED1E28C647EA00A6C13D /* Models */,
-				A0A8ED1528C6438D00A6C13D /* GoogleService-Info.plist */,
 				A0A8ED0728C63DF200A6C13D /* G4RumApp.swift */,
 				A0A8ED0928C63DF200A6C13D /* ContentView.swift */,
 				A0A8ED0B28C63DF700A6C13D /* Assets.xcassets */,

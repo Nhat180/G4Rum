@@ -13,6 +13,7 @@ struct GameListView: View {
     @Environment(\.colorScheme) var colorScheme
     @StateObject private var gameViewModel = GameViewModel()
     @State var searchText = ""
+    var genre: String
     
     var filteredGame: [Game] {
         if (searchText.isEmpty) {
@@ -51,17 +52,20 @@ struct GameListView: View {
             }
             
         }
+        .navigationBarTitleDisplayMode(.inline)
+        //.navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         .disableAutocorrection(true)
         .accentColor(colorScheme == .dark ? .white : .black)
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onAppear() {
-            self.gameViewModel.getAllGames(genre: "Indie")
+            self.gameViewModel.getAllGames(genre: genre)
         }
     }
 }
 
 struct GameListView_Previews: PreviewProvider {
     static var previews: some View {
-        GameListView()
+        GameListView(genre: "Action")
     }
 }

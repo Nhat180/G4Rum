@@ -12,6 +12,7 @@ struct HomeView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @StateObject private var gameViewModel = GameViewModel()
+    @StateObject private var categoryViewModel = CategoryViewModel()
     @ObservedObject var authViewModel = AuthViewModel()
     @State private var search: String = ""
     let width = UIScreen.main.bounds.width
@@ -108,12 +109,33 @@ struct HomeView: View {
                             .padding(.horizontal)
                         
                         ScrollView (.horizontal, showsIndicators: false) {
+                            VStack {
+                                ForEach (categoryViewModel.categories) {
+                                    genre in NavigationLink (destination: GameListView (genre: genre.title),  label: {
+                                        HStack {
+                                            genre.image
+                                                .resizable()
+                                                .frame(width: width / 8, height: width / 8)
+                                                .cornerRadius(20.0)
+                                            Spacer()
+                                            Text(genre.title)
+                                                .font(.system(size: width / 20))
+                                                .padding(.horizontal)
+                                        }
+                                        .padding()
+                                    })
+                                }
+                            }
+                            .background(.clear)
+                            .cornerRadius(20.0)
                             
                         }
+                        
                     }
                 }
             }.onAppear(){
                 self.gameViewModel.getRandomGames()
+                self.categoryViewModel.getAllCategories()
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
