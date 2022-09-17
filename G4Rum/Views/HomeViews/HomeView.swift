@@ -119,6 +119,7 @@ struct HomeView: View {
                     }
                 }
             }.onAppear(){
+                self.gameViewModel.resetRandomGames()
                 self.gameViewModel.getRandomGames()
                 self.categoryViewModel.getAllCategories()
             }
