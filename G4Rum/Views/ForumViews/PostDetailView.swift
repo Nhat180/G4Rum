@@ -44,7 +44,6 @@ struct PostDetailView: View {
                                 VStack(alignment: .leading) {
                                     Text(post.username)
                                         .font(.system(size: width / 25))
-                                        .opacity(0.5)
                                     Text(post.createdDate)
                                         .font(.system(size: width / 30))
                                         .opacity(0.5)
@@ -54,6 +53,7 @@ struct PostDetailView: View {
                             
                             Text(post.content)
                                 .font(.system(size: width / 25))
+                                .opacity(0.5)
                                 .frame(maxWidth: .infinity, alignment:.leading)
                             Divider()
                                 .overlay(colorScheme == .dark ? .white : .black)

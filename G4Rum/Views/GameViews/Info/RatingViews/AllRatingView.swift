@@ -25,11 +25,6 @@ struct AllRatingView: View {
             ZStack {
                 ScrollView {
                     VStack {
-                        Text("All Ratings & Reviews")
-                            .font(.system(size: width / 15))
-                            .bold()
-                            .frame(maxWidth: .infinity, alignment:.leading)
-                            .padding(.bottom, 2)
                         ForEach(gameRatingViewModel.reviews) { rating in
                             RatingRowView(rating: rating)
                         }
@@ -37,6 +32,7 @@ struct AllRatingView: View {
                     }
                     .padding()
                 }
+                NavigationLink("",destination: AddRatingView(game: game), isActive: $showingAddScreen)
                 Button {
                     showingAddScreen.toggle()
                 } label: {
@@ -48,12 +44,12 @@ struct AllRatingView: View {
                         .padding()
                 }
                 .offset(x: width * 3 / 8, y: height * 3 / 8)
-                .sheet(isPresented: $showingAddScreen) {
-                    AddRatingView(game: game)
-                }
+//                .sheet(isPresented: $showingAddScreen) {
+//                    AddRatingView(game: game)
+//                }
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle("All Ratings & Reviews")
         .onAppear() {
             self.gameRatingViewModel.getAllRatings(gameID: game.id)
         }

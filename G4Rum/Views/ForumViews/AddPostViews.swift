@@ -32,20 +32,6 @@ struct AddPostViews: View {
                                endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
-                    HStack{
-                        Button {
-                            postView.toggle()
-                        } label: {
-                            Text("Cancel")
-                        }
-                        Spacer()
-                        Button {
-                            postView.toggle()
-                            postViewModel.addPost(gameID: gameID, title: title, content: content, username: (user?.email)!)
-                        } label: {
-                            Text("Save")
-                        }
-                    }
                     HStack {
                         Image("headphone")
                             .resizable()
@@ -80,7 +66,7 @@ struct AddPostViews: View {
                         .font(.system(size: width / 20))
                         .padding(.top, 15)
                     TextEditor(text: $content)
-                        .frame(height: height / 10)
+                        .frame(height: height / 2)
                         .opacity(0.5)
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -89,8 +75,16 @@ struct AddPostViews: View {
                 }
                 .padding()
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        postView.toggle()
+                        postViewModel.addPost(gameID: gameID, title: title, content: content, username: (user?.email)!)
+                    } label: {
+                        Text("Save")
+                    }
+                }
+            }
         }
     }
 }
