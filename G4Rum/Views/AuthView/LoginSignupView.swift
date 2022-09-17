@@ -18,7 +18,6 @@ struct LoginSignupView: View {
                 //.preferredColorScheme(.dark)
         } else {
             HomeView(authViewModel: authViewModel)
-            //GameListView() // đang test nên đừng xoá
         }
     }
 }
@@ -137,6 +136,7 @@ struct Login : View {
                                 .foregroundColor(colorScheme == .dark ? ColorConstants.darkRed : ColorConstants.darkRed)
                             
                             TextField("Email Address", text: self.$email)
+                                .disableAutocorrection(true)
                         }
                         
                         Divider().background(Color.white.opacity(0.5))
@@ -156,8 +156,10 @@ struct Login : View {
                             
                             if hiddenPassword {
                                 SecureField("Password", text: self.$pass)
+                                    .disableAutocorrection(true)
                             } else {
                                 TextField("Password", text: self.$pass)
+                                    .disableAutocorrection(true)
                             }
                         }
                         
@@ -287,6 +289,7 @@ struct SignUP : View {
                             .foregroundColor(ColorConstants.darkRed)
                         
                         TextField("Email Address", text: self.$email)
+                            .disableAutocorrection(true)
                     }
                     
                     Divider().background(Color.white.opacity(0.5))
@@ -306,8 +309,10 @@ struct SignUP : View {
                         
                         if hiddenPassword {
                             SecureField("Password", text: self.$pass)
+                                .disableAutocorrection(true)
                         } else {
                             TextField("Password", text: self.$pass)
+                                .disableAutocorrection(true)
                         }
                     }
                     
