@@ -33,24 +33,6 @@ struct HomeView: View {
                                 .padding()
                             
                             Spacer()
-                            
-                            Menu {
-                                Button(action: {
-                                    authViewModel.signOut()
-                                }, label: {
-                                    Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
-                                })
-                            } label: {
-                                Label (
-                                    title: {},
-                                    icon: {
-                                        Image(systemName: "person.circle")
-                                            .resizable()
-                                            .frame(width: width / 10, height: width / 10, alignment: .center)
-                                    }
-                                )
-                            }
-                            .padding()
                         }
                         
                         Divider()
@@ -108,28 +90,31 @@ struct HomeView: View {
                             .bold()
                             .padding(.horizontal)
                         
-                        ScrollView (.horizontal, showsIndicators: false) {
                             VStack {
                                 ForEach (categoryViewModel.categories) {
                                     genre in NavigationLink (destination: GameListView (genre: genre.title),  label: {
-                                        HStack {
-                                            genre.image
-                                                .resizable()
-                                                .frame(width: width / 8, height: width / 8)
-                                                .cornerRadius(20.0)
-                                            Spacer()
-                                            Text(genre.title)
-                                                .font(.system(size: width / 20))
+                                        VStack {
+                                            HStack {
+                                                genre.image
+                                                    .resizable()
+                                                    .frame(width: width / 8, height: width / 8)
+                                                    .cornerRadius(20.0)
+                                                Spacer()
+                                                Text(genre.title)
+                                                    .font(.system(size: width / 20))
+                                                    .padding(.horizontal)
+                                                
+                                            }
+                                            .padding(.horizontal)
+                                            Divider()
+                                                .overlay(colorScheme == .dark ? .white : .black)
                                                 .padding(.horizontal)
                                         }
-                                        .padding()
                                     })
                                 }
                             }
                             .background(.clear)
                             .cornerRadius(20.0)
-                            
-                        }
                         
                     }
                 }
@@ -137,8 +122,26 @@ struct HomeView: View {
                 self.gameViewModel.getRandomGames()
                 self.categoryViewModel.getAllCategories()
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+            .navigationBarTitle("Home")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button(action: {
+                            authViewModel.signOut()
+                        }, label: {
+                            Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
+                        })
+                    } label: {
+                        Label (
+                            title: {},
+                            icon: {
+                                Image(systemName: "person.circle")
+                            }
+                        )
+                    }
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
         }
         .accentColor(colorScheme == .dark ? .white : .black)
         .background(.clear)

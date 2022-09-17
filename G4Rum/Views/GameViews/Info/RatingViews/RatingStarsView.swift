@@ -18,6 +18,9 @@ struct RatingStarsView: View {
     var onColor = Color.yellow
     
     var maxRating = 5
+    
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     var body: some View {
         HStack{
             if label.isEmpty == false {
@@ -28,7 +31,7 @@ struct RatingStarsView: View {
             ForEach(1..<maxRating + 1, id: \.self){ number in
                 showStar(for: number)
                     .resizable()
-                    .frame(width: 50, height: 50)
+                    .frame(width: width / 10, height: width / 10)
                     .foregroundColor(number > rating ? offColor : onColor)
                     
                     .onTapGesture {

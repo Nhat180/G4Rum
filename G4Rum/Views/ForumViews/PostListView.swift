@@ -17,9 +17,9 @@ struct PostListView: View {
     
     @State var addPost:Bool = false
     var body: some View {
-        if addPost {
-            AddPostViews(gameID: gameID)
-        } else {
+//        if addPost {
+//            AddPostViews(gameID: gameID)
+//        } else {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
                 startPoint: .topLeading,
@@ -28,11 +28,6 @@ struct PostListView: View {
                 ZStack {
                     ScrollView {
                         VStack {
-                            Text("All Posts")
-                                .font(.system(size: width / 15))
-                                .bold()
-                                .frame(maxWidth: .infinity, alignment:.leading)
-                                .padding(.bottom, 2)
                             ForEach(postViewModel.posts) { post in
                                 NavigationLink {
                                     PostDetailView(gameID: gameID, post: post)
@@ -43,6 +38,7 @@ struct PostListView: View {
                         }
                         .padding()
                     }
+                    NavigationLink("",destination: AddPostViews(gameID: gameID), isActive: $addPost)
                     Button {
                         addPost.toggle()
                     } label: {
@@ -56,11 +52,11 @@ struct PostListView: View {
                     .offset(x: width * 3 / 8, y: height * 3 / 8)
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("All Posts")
             .onAppear() {
                 self.postViewModel.getAllPosts(gameID: gameID)
             }
-        }
+        //}
     }
 }
 

@@ -26,36 +26,29 @@ struct GameListView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
-                
-                ScrollView (.vertical, showsIndicators: false) {
-                    if (filteredGame.isEmpty) {
-                        Text("No games found")
-                    } else {
-                        VStack {
-                            ForEach(filteredGame, id: \.id) {
-                                game in NavigationLink(
-                                    destination: GameCardView(game: game), label: {
-                                        GameRowView(game: game)
-                                    })
-                            }
-                            .listRowSeparator(.hidden)
-                            .navigationBarTitle(Text("Game List"))
-                            .background(.clear)
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? ColorConstants.colorDarkMode : ColorConstants.colorLightMode),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
+            
+            ScrollView (.vertical, showsIndicators: false) {
+                if (filteredGame.isEmpty) {
+                    Text("No games found")
+                } else {
+                    VStack {
+                        ForEach(filteredGame, id: \.id) {
+                            game in NavigationLink(
+                                destination: GameCardView(game: game), label: {
+                                    GameRowView(game: game)
+                                })
                         }
+                        .listRowSeparator(.hidden)
+                        .background(.clear)
                     }
                 }
             }
-            
         }
-        .navigationBarTitleDisplayMode(.inline)
-        //.navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
-        .disableAutocorrection(true)
+        .navigationBarTitle(Text("Game List"))
         .accentColor(colorScheme == .dark ? .white : .black)
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onAppear() {
