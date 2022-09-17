@@ -39,6 +39,7 @@ struct PostCardRowView: View {
                 .lineLimit(4)
                 .font(.system(size: width / 25))
                 .opacity(0.5)
+                .multilineTextAlignment(.leading)
         }
         .padding()
         .background(Color.gray.opacity(0.2))

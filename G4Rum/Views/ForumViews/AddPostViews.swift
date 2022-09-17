@@ -15,6 +15,8 @@ struct AddPostViews: View {
     @State var postView:Bool = false
     @State var title: String = ""
     @State var content = ""
+    @State private var validation = false
+    @State var alertStr = ""
     @Environment(\.dismiss) var dismiss
     @State var textEditorHeight : CGFloat = 20
     var gameID: String
@@ -40,7 +42,7 @@ struct AddPostViews: View {
                             .clipShape(Rectangle())
                         
                         VStack(alignment: .leading) {
-                            Text("Tongnguyen@gmail.com")
+                            Text((user?.email)!)
                         }
                     }
                     
@@ -78,13 +80,22 @@ struct AddPostViews: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        postView.toggle()
-                        postViewModel.addPost(gameID: gameID, title: title, content: content, username: (user?.email)!)
+                        if (title == "" || content == "") {
+                            if (title == "") {
+                                alertStr = "Please enter the title of the post"
+                            } else {
+                                alertStr = "Please put some content for the post"
+                            }
+                            validation = true
+                        } else {
+                            postView.toggle()
+                            postViewModel.addPost(gameID: gameID, title: title, content: content, username: (user?.email)!)
+                        }
                     } label: {
                         Text("Save")
                     }
                 }
-            }
+            }.toast(message: alertStr, isShowing: $validation, duration: Toast.short)
         }
     }
 }

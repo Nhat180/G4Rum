@@ -71,4 +71,8 @@ class GameViewModel: ObservableObject {
             }
         }
     }
+    
+    func resetRandomGames() {
+        randomGames.removeAll()
+    }
 }

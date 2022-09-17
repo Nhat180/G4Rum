@@ -14,6 +14,8 @@ struct PostDetailView: View {
     @Environment(\.colorScheme) var colorScheme
     var gameID: String
     var post: Post
+    @State private var validation = false
+    @State var alertStr = ""
     @State var textEditorHeight : CGFloat = 100
     let user = Auth.auth().currentUser
     let width = UIScreen.main.bounds.width
@@ -78,8 +80,14 @@ struct PostDetailView: View {
                                 .disableAutocorrection(true)
                         }
                         Button {
-                            postComment.addComment(gameID: gameID, post: post, username: (user?.email)!, text: comment)
-                            comment = ""
+                            if (comment == "") {
+                                alertStr = "Please put some comment before sending"
+                                validation = true
+                            } else {
+                                postComment.addComment(gameID: gameID, post: post, username: (user?.email)!, text: comment)
+                                comment = ""
+                            }
+                            
                         } label: {
                             Text("Send")
                                 .font(.system(size: width / 25))
@@ -89,6 +97,7 @@ struct PostDetailView: View {
                 }
                 .padding()
                 .navigationBarTitleDisplayMode(.inline)
+                .toast(message: alertStr, isShowing: $validation, duration: Toast.short)
             }.onAppear() {
                 self.postComment.getAllComment(gameID: gameID, postID: post.id)
             }
