@@ -54,7 +54,6 @@
 		A0DE29A828CEE4D700AC7E3E /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DE29A728CEE4D700AC7E3E /* PostViewModel.swift */; };
 		A0E8C8FC28C738B700E0389D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8C8FB28C738B700E0389D /* Comment.swift */; };
 		A0E8C8FE28C7497E00E0389D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8C8FD28C7497E00E0389D /* Post.swift */; };
-		A0E8C90028C7557400E0389D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8C8FF28C7557400E0389D /* User.swift */; };
 		A0EFECCE28C7091700801BFD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFECCD28C7091700801BFD /* Game.swift */; };
 		A0FA0D3928C7A8E800AC09EA /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FA0D3828C7A8E800AC09EA /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -105,7 +104,6 @@
 		A0DE29A728CEE4D700AC7E3E /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		A0E8C8FB28C738B700E0389D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A0E8C8FD28C7497E00E0389D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		A0E8C8FF28C7557400E0389D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A0EFECCD28C7091700801BFD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A0FA0D3828C7A8E800AC09EA /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,7 +293,6 @@
 				A0EFECCD28C7091700801BFD /* Game.swift */,
 				A0E8C8FB28C738B700E0389D /* Comment.swift */,
 				A0E8C8FD28C7497E00E0389D /* Post.swift */,
-				A0E8C8FF28C7557400E0389D /* User.swift */,
 				A073E4F028C900F800166899 /* Category.swift */,
 				1C08622A28CDF627007B7932 /* FontManager.swift */,
 			);
@@ -411,7 +408,6 @@
 				A073E4F128C900F800166899 /* Category.swift in Sources */,
 				A0A8ED0A28C63DF200A6C13D /* ContentView.swift in Sources */,
 				A0EFECCE28C7091700801BFD /* Game.swift in Sources */,
-				A0E8C90028C7557400E0389D /* User.swift in Sources */,
 				A027100428CB981800B21397 /* LoginSignupView.swift in Sources */,
 				9FB4982628CF6A7200E1E8D9 /* ToastViewModifier.swift in Sources */,
 				842EC48828C9CF6E002854E2 /* AuthViewModel.swift in Sources */,
