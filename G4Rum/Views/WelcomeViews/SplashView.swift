@@ -2,11 +2,10 @@
   RMIT University Vietnam
   Course: COSC2659 iOS Development
   Semester: 2022B
-  Assessment: Assignment 2
-  Author: Ta Quoc Thang
-  ID: 3713564
-  Created  date: 22/08/2022
-  Last modified : 26/08/2022
+  Assessment: Assignment 3
+  Author: NoName Team
+  Created  date: 5/9/2022
+  Last modified : 18/9/2022
   Acknowledgement: https://www.hackingwithswift.com/quick-start/swiftui/how-to-render-a-gradient
 */
 

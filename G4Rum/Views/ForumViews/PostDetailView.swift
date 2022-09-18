@@ -1,9 +1,13 @@
-//
-//  DetailPostViews.swift
-//  G4Rum
-//
-//  Created by Ngô Xuân Huy on 15/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: NoName Team
+  Created  date: 15/9/2022
+  Last modified: 18/9/2022
+  Acknowledgement: Acknowledge the resources that you use here.
+*/
 
 import SwiftUI
 import FirebaseAuth

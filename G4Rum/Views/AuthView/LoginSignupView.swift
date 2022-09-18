@@ -1,10 +1,16 @@
-//
-//  LoginSignupView.swift
-//  G4Rum
-//
-//  Created by Thang, Ta Quoc on 06/09/2022.
-// https://www.youtube.com/watch?v=84gRTVNvOz4
-// https://swiftuirecipes.com/blog/swiftui-toast
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: NoName Team
+  Created  date: 6/9/2022
+  Last modified: 18/9/2022
+  Acknowledgement:
+ - https://www.youtube.com/watch?v=84gRTVNvOz4
+ - https://swiftuirecipes.com/blog/swiftui-toast
+*/
+
 
 import SwiftUI
 
